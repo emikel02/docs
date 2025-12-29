@@ -1,0 +1,80 @@
+---
+title: Column Detection
+description: Automatic column type detection and mapping
+---
+
+# Column Detection
+
+Smelt automatically analyzes your CSV headers and sample data to identify standard field types.
+
+## How Detection Works
+
+1. **Header analysis** — Column names matched against known patterns
+2. **Confidence scoring** — 0.9 for exact matches, 0.6 for fuzzy matches
+3. **Sample verification** — Sample values displayed for confirmation
+
+## 15 Recognized Field Types
+
+Smelt automatically detects these column types:
+
+| # | Field Type | Example Headers |
+|---|------------|-----------------|
+| 1 | First Name | `first_name`, `FirstName`, `First` |
+| 2 | Last Name | `last_name`, `LastName`, `Surname` |
+| 3 | Full Name | `full_name`, `Name`, `Contact Name` |
+| 4 | Email | `email`, `Email Address`, `Contact Email` |
+| 5 | Phone | `phone`, `Phone Number`, `Mobile` |
+| 6 | Company Name | `company`, `Company Name`, `Organization` |
+| 7 | Job Title | `title`, `Job Title`, `Position` |
+| 8 | Industry | `industry`, `Sector`, `Vertical` |
+| 9 | City | `city`, `City`, `Location` |
+| 10 | State/Region | `state`, `Region`, `Province` |
+| 11 | Country | `country`, `Country`, `Nation` |
+| 12 | LinkedIn URL | `linkedin`, `LinkedIn URL`, `Profile` |
+| 13 | Website/URL | `website`, `URL`, `Company Website` |
+| 14 | Company Size | `company_size`, `Employees`, `Size` |
+| 15 | Revenue | `revenue`, `Annual Revenue`, `ARR` |
+
+## Viewing Detected Columns
+
+After upload, the file detail page shows:
+
+- Each column name from your CSV
+- Detected field type (if recognized)
+- Confidence score
+- Sample values from your data
+
+## If Detection Is Wrong
+
+<Note>
+  Column detection is for **display purposes only**. It doesn't affect how templates work.
+</Note>
+
+In templates, always use the **exact column name** from your CSV:
+
+```text
+{{Company Name}}     ✅ Uses your actual column
+{{Company}}          ❌ Won't work if column is "Company Name"
+```
+
+The detection just helps you understand your data—it doesn't rename or modify columns.
+
+## Unrecognized Columns
+
+Columns that don't match known patterns are still fully usable:
+
+- They appear in the column list
+- You can reference them in templates with `{{Column Name}}`
+- They just won't have a "detected type" label
+
+## Custom Column Names
+
+You can use any column names you want. Smelt will:
+
+1. List all columns from your CSV
+2. Attempt to detect standard types
+3. Let you reference any column in templates
+
+<Tip>
+  Use descriptive column names like `Pain_Point_Research` or `Recent_News` for custom enrichment data. You can reference these directly in templates.
+</Tip>

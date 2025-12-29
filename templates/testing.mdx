@@ -1,0 +1,114 @@
+---
+title: Testing Templates
+description: Test your templates before running full jobs
+---
+
+# Testing Templates
+
+Test your templates with real data before running full jobs to catch issues early.
+
+## Why Test First
+
+- ✅ Verify prompt produces good output
+- ✅ Check quality flags for issues
+- ✅ See cost estimates
+- ✅ Catch variable problems
+- ✅ Iterate quickly without wasting usage
+
+<Warning>
+  Template tests count toward your monthly usage! Each test consumes 1 row of your allowance.
+</Warning>
+
+## How to Test a Template
+
+<Steps>
+  <Step title="Open the Template">
+    Go to Templates and click on the template you want to test
+  </Step>
+  <Step title="Select a Test File">
+    Choose a file from your uploaded CSVs to use as test data
+  </Step>
+  <Step title="Click Test">
+    Click the **Test** button
+  </Step>
+  <Step title="Review Results">
+    See generated output, quality flags, token usage, and cost
+  </Step>
+  <Step title="Iterate if Needed">
+    Adjust your prompt and test again until satisfied
+  </Step>
+</Steps>
+
+## What You'll See in Test Results
+
+| Field | Description |
+|-------|-------------|
+| **Generated Output** | The AI's response for the test row |
+| **Quality Flags** | Any issues detected (too short, forbidden word, etc.) |
+| **Token Usage** | Input and output tokens consumed |
+| **Cost** | Estimated cost for this generation |
+| **Input Data** | The row data that was used |
+| **Built Prompt** | The final prompt sent to the AI (with variables filled) |
+
+## Testing Unsaved Templates
+
+You can test a template **before saving it**:
+
+1. Fill in the template form (name, prompt, etc.)
+2. Select a test file
+3. Click **Test** 
+4. Review results
+5. Then save if satisfied
+
+This lets you iterate on your prompt without creating multiple saved versions.
+
+## Interpreting Test Results
+
+### Good Results
+- ✅ Output is relevant and personalized
+- ✅ No quality flags (or only minor ones)
+- ✅ Length is appropriate
+- ✅ Matches your intended tone
+
+### Warning Signs
+- ⚠️ Output is too generic
+- ⚠️ Quality flags present
+- ⚠️ AI ignored your instructions
+- ⚠️ Variables didn't resolve correctly
+
+### What to Do If Results Are Poor
+
+<AccordionGroup>
+  <Accordion title="Output is too generic">
+    Add more specific instructions. Include examples. Reference more data columns.
+  </Accordion>
+  <Accordion title="Output is too long/short">
+    Add explicit length constraints: "Keep under 100 characters" or "Write 2-3 sentences"
+  </Accordion>
+  <Accordion title="AI ignored instructions">
+    Make instructions clearer. Put them at the end of the prompt. Use "IMPORTANT:" prefix.
+  </Accordion>
+  <Accordion title="Variables show as empty">
+    Check that column names match exactly. View your file to verify column names.
+  </Accordion>
+  <Accordion title="Contains forbidden words">
+    The AI might not follow forbidden words perfectly. Make the prohibition clearer in your prompt too.
+  </Accordion>
+</AccordionGroup>
+
+## Testing Multiple Rows
+
+The test feature runs on sample rows from your file. This gives you a representative output without processing the entire file.
+
+<Tip>
+  If testing consistently produces good results, you can confidently run a full job.
+</Tip>
+
+## Cost of Testing
+
+Each test:
+- Uses 1 row of your monthly allowance
+- Consumes tokens (billed if BYOK)
+- Counts toward usage tracking
+
+**Recommendation:** Test 3-5 times to iterate, then run a small batch (10-20 rows) as a final verification before processing thousands.

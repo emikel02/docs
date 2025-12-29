@@ -1,0 +1,132 @@
+---
+title: Creating Jobs
+description: How to create and configure jobs
+---
+
+# Creating Jobs
+
+A job combines a file with one or more templates to generate personalized copy for each row.
+
+**Job = File + Templates + Row Range**
+
+## Job Creation Wizard
+
+<Steps>
+  <Step title="Step 1: Select File">
+    Choose from your uploaded CSV files.
+    
+    You'll see:
+    - File name
+    - Row count
+    - Column count
+    - Quality score
+    
+    <Tip>
+      Higher quality scores generally produce better personalization.
+    </Tip>
+  </Step>
+  
+  <Step title="Step 2: Choose Row Range">
+    Select which rows to process:
+    
+    - **All rows:** Process the entire file
+    - **Custom range:** Set start and end rows
+    
+    <Tip>
+      Start with 10-20 rows to test before processing thousands.
+    </Tip>
+  </Step>
+  
+  <Step title="Step 3: Select Templates">
+    Choose one or more templates from **your templates** (not the Template Library).
+    
+    **If using multiple templates:**
+    - Order matters for chaining!
+    - Earlier outputs can be used in later templates
+    - Drag to reorder if needed
+    
+    <Info>
+      **Template order matters!** Templates run top-to-bottom. Use `{{OutputColumnName}}` from earlier templates in later ones.
+    </Info>
+  </Step>
+  
+  <Step title="Step 4: Review & Start">
+    Review before starting:
+    
+    - Total rows to process
+    - Templates selected
+    - Estimated cost
+    - Usage impact
+    
+    Click **Start Job** to begin processing.
+  </Step>
+</Steps>
+
+## Template Selection
+
+### What Templates Are Available
+
+Only templates from **My Templates** appear in the job wizard:
+- ✅ Templates you created
+- ✅ Templates you duplicated from the Library
+- ❌ System templates (must duplicate first)
+
+### Multiple Templates
+
+You can select multiple templates per job:
+
+| Templates | Usage Per Row | Example |
+|-----------|---------------|---------|
+| 1 | 1 | Hook only |
+| 2 | 2 | Hook + CTA |
+| 3 | 3 | Hook + Pain Point + CTA |
+
+<Warning>
+  Each template × each row = usage. 3 templates on 1,000 rows = 3,000 usage.
+</Warning>
+
+### Template Order for Chaining
+
+If you're using template chaining (where Template B uses output from Template A):
+
+1. Put Template A first in the list
+2. Put Template B second
+3. Template A's output column becomes available to Template B
+
+## Row Range Selection
+
+### All Rows
+Process every row in the file. Best for final runs.
+
+### Custom Range
+Set specific start and end rows:
+- **Start row:** First row to process (1-based)
+- **End row:** Last row to process
+
+**Use cases for custom range:**
+- Test on first 20 rows
+- Process in batches
+- Skip header issues
+- Re-run specific sections
+
+## Cost Estimation
+
+Before starting, you'll see:
+- **Estimated tokens:** Approximate token usage
+- **Estimated cost:** Dollar cost (based on model pricing)
+- **Usage impact:** How many rows of your limit this consumes
+
+<Note>
+  Estimates are approximations. Actual costs may vary slightly based on output lengths.
+</Note>
+
+## Pre-Job Checklist
+
+Before clicking Start:
+
+- [ ] Correct file selected?
+- [ ] Row range appropriate? (test small first!)
+- [ ] Templates in correct order?
+- [ ] Templates tested individually?
+- [ ] Enough usage remaining?
+- [ ] Cost acceptable?

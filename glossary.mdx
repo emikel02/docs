@@ -1,0 +1,164 @@
+---
+title: Glossary
+description: Key terms and definitions
+---
+
+# Glossary
+
+Quick reference for Smelt terminology.
+
+---
+
+## A-C
+
+<AccordionGroup>
+  <Accordion title="Auto-Fix">
+    Smelt's automatic cleanup of AI outputs. Strips preambles ("Here's a hook:"), postambles ("Let me know!"), and quote wrappers before you see the results.
+  </Accordion>
+  
+  <Accordion title="BYOK (Bring Your Own Key)">
+    Billing mode where you provide your own OpenAI API key. You pay OpenAI directly for AI costs, resulting in significantly lower per-row costs.
+  </Accordion>
+  
+  <Accordion title="Chain / Chaining">
+    Using the output from one template as input to another template. Example: Hook template → Email body template that references `{{Hook}}`.
+  </Accordion>
+  
+  <Accordion title="Column Variable">
+    `{{ColumnName}}` syntax used in templates to pull data from your CSV. Gets replaced with each row's actual value during processing.
+  </Accordion>
+  
+  <Accordion title="Confidence Score">
+    A 0-100 rating of **input data completeness** for each row. Higher score = more data was available for the AI to use. Not a rating of output quality.
+  </Accordion>
+  
+  <Accordion title="CTA (Call to Action)">
+    The closing line of a cold email that prompts the reader to take action. Example: "Open to a quick call this week?"
+  </Accordion>
+  
+  <Accordion title="Custom Template">
+    A template you create yourself (vs system templates). Stored in "My Templates" and fully editable.
+  </Accordion>
+  
+  <Accordion title="Custom Variable">
+    `{{$VariableName}}` syntax for reusable values you define in Settings. Same value used across all rows. Example: `{{$CompanyName}}` = "Acme Corp"
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## D-J
+
+<AccordionGroup>
+  <Accordion title="Duplicate Detection">
+    Smelt's automatic identification of duplicate emails, company names, phone numbers, and LinkedIn URLs in your uploaded file.
+  </Accordion>
+  
+  <Accordion title="Forbidden Words">
+    Words you specify that should never appear in output. If detected, the output gets a `forbidden_word` quality flag.
+  </Accordion>
+  
+  <Accordion title="Hook">
+    The opening line of a cold email designed to grab attention. Usually personalized based on the recipient's data.
+  </Accordion>
+  
+  <Accordion title="Job">
+    A batch processing run that combines a file with one or more templates. Jobs process rows in parallel and track progress.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## M-P
+
+<AccordionGroup>
+  <Accordion title="Managed Mode">
+    Billing mode where Smelt handles all AI costs. No API key needed. Simpler billing but slightly higher monthly fee than BYOK.
+  </Accordion>
+  
+  <Accordion title="Output Column Name">
+    The name of the new column that gets added to your results. Set when creating a template. Example: "Hook" or "Pain_Point".
+  </Accordion>
+  
+  <Accordion title="Pain Point">
+    A challenge or problem relevant to the prospect, referenced in cold email copy. Example: "Managing cash flow during slow seasons..."
+  </Accordion>
+  
+  <Accordion title="Personalization">
+    Making copy unique to each prospect using their specific data (name, company, industry, etc.) rather than generic templates.
+  </Accordion>
+  
+  <Accordion title="Preamble">
+    Unwanted AI output at the start like "Here's a hook:" or "Sure!". Auto-fixed by Smelt.
+  </Accordion>
+  
+  <Accordion title="Postamble">
+    Unwanted AI output at the end like "Let me know if you need changes!" or "Hope this helps!". Auto-fixed by Smelt.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Q-R
+
+<AccordionGroup>
+  <Accordion title="Quality Flag">
+    An automated warning about a potential issue in generated output. 11 flag types including `too_short`, `forbidden_word`, `has_placeholder`, etc.
+  </Accordion>
+  
+  <Accordion title="Quality Score (File)">
+    A 0-100 rating of your uploaded CSV's data quality. Based on column completeness, recognized fields, valid formats, and empty rows.
+  </Accordion>
+  
+  <Accordion title="Reference Columns">
+    The CSV columns a template uses. Specified when creating a template so Smelt knows which data to pass to the AI.
+  </Accordion>
+  
+  <Accordion title="Row">
+    A single lead/contact in your CSV. Each row gets processed separately and generates its own unique output.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## S-Z
+
+<AccordionGroup>
+  <Accordion title="System Template">
+    One of the 17 pre-built templates provided by Smelt. Found in Template Library. Read-only—duplicate to customize.
+  </Accordion>
+  
+  <Accordion title="Template">
+    An AI prompt configuration that defines how to generate copy. Includes the prompt text, output column name, constraints, and settings.
+  </Accordion>
+  
+  <Accordion title="Template Library">
+    The collection of 17 system templates organized by category (Cold Outreach, Lead Qualification, Value Proposition, Personalization).
+  </Accordion>
+  
+  <Accordion title="Token">
+    The unit AI models use to measure text length. Roughly 4 characters or 0.75 words. Used for cost calculation.
+  </Accordion>
+  
+  <Accordion title="Usage">
+    Your row consumption against your monthly limit. Calculated as: Templates × Rows = Usage. Tests also count.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Quick Reference Table
+
+| Term | Quick Definition |
+|------|------------------|
+| BYOK | Bring your own OpenAI key |
+| Managed | Smelt handles AI costs |
+| Job | Batch processing run |
+| Template | AI prompt configuration |
+| Hook | Opening line of email |
+| CTA | Call to action |
+| Chain | Templates using other templates' outputs |
+| Quality Flag | Automated output warning |
+| Confidence Score | Input data completeness (0-100) |
+| Row | Single lead in your CSV |
+| Usage | Rows consumed this billing period |

@@ -1,0 +1,115 @@
+---
+title: Supported Formats & Encoding
+description: File requirements, encoding support, and duplicate detection
+---
+
+# Supported Formats & Encoding
+
+## File Requirements
+
+| Requirement | Value |
+|-------------|-------|
+| **Format** | CSV only |
+| **Size limit** | 50MB maximum |
+| **Maximum columns** | 100 |
+| **Maximum rows** | 50,000 per file |
+
+## Supported Encodings
+
+Smelt supports multiple character encodings:
+
+| Encoding | Recommendation |
+|----------|----------------|
+| **UTF-8** | ✅ Recommended — best compatibility |
+| **UTF-16** | Supported |
+| **Latin-1 (ISO-8859-1)** | Supported |
+| **Windows-1252** | Supported |
+
+<Tip>
+  When in doubt, use UTF-8. It handles international characters and is the most widely compatible.
+</Tip>
+
+## Exporting as UTF-8
+
+<Tabs>
+  <Tab title="From Excel">
+    1. File → Save As
+    2. Choose "CSV UTF-8 (Comma delimited)"
+    3. Save
+  </Tab>
+  <Tab title="From Google Sheets">
+    1. File → Download
+    2. Choose "Comma Separated Values (.csv)"
+    3. Google Sheets exports as UTF-8 by default
+  </Tab>
+  <Tab title="From Numbers (Mac)">
+    1. File → Export To → CSV
+    2. Text Encoding: Unicode (UTF-8)
+    3. Export
+  </Tab>
+</Tabs>
+
+## Duplicate Detection
+
+Smelt automatically detects duplicates in your data:
+
+### What's Detected
+
+| Field | Detection |
+|-------|-----------|
+| **Emails** | Exact match duplicates |
+| **Company names** | Exact match duplicates |
+| **Phone numbers** | Exact match duplicates |
+| **LinkedIn URLs** | Exact match duplicates |
+
+### Where Duplicates Are Shown
+
+The file detail page displays:
+- Duplicate count for each key field
+- Which rows contain duplicates
+
+### How Duplicates Affect Processing
+
+<Note>
+  Duplicates are still processed — each row generates output.
+</Note>
+
+Smelt doesn't automatically remove duplicates. Each row in your CSV will:
+- Be processed by your templates
+- Generate its own output
+- Count toward your usage
+
+<Tip>
+  Consider deduplicating before upload if you want to:
+  - Save on usage costs
+  - Avoid sending duplicate emails
+  - Keep your data clean
+</Tip>
+
+## Best Practices for CSV Formatting
+
+<AccordionGroup>
+  <Accordion title="Use headers in the first row">
+    Row 1 should contain column names, not data.
+  </Accordion>
+  <Accordion title="Consistent column names">
+    Keep naming consistent across files if you reuse templates.
+  </Accordion>
+  <Accordion title="No merged cells">
+    CSVs don't support merged cells. Unmerge before exporting.
+  </Accordion>
+  <Accordion title="Clean data">
+    Trim whitespace, fix obvious typos, remove empty rows.
+  </Accordion>
+  <Accordion title="Avoid special characters in headers">
+    Simple alphanumeric column names work best.
+  </Accordion>
+</AccordionGroup>
+
+## Common Encoding Issues
+
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| Garbled characters (Ã©, â€™) | Wrong encoding detected | Re-save as UTF-8 |
+| Missing characters | Incompatible encoding | Re-save as UTF-8 |
+| Empty cells showing data | Hidden characters | Clean data, re-export |

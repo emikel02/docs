@@ -1,0 +1,110 @@
+---
+title: Understanding Templates
+description: What templates are and how they work
+---
+
+# Understanding Templates
+
+A template is an AI prompt configuration that tells Smelt how to generate personalized copy for each row in your CSV.
+
+**Templates = AI prompts + configuration**
+
+## Template Categories
+
+<CardGroup cols={2}>
+  <Card title="Cold Outreach" icon="envelope">
+    Opening lines, hooks, attention grabbers
+  </Card>
+  <Card title="Lead Qualification" icon="filter">
+    Scoring, fit assessment, prioritization
+  </Card>
+  <Card title="Value Proposition" icon="gem">
+    Benefits, ROI statements, competitive advantages
+  </Card>
+  <Card title="Personalization" icon="user">
+    First lines, follow-ups, meeting requests
+  </Card>
+</CardGroup>
+
+You can also create **Custom** categories for your specific use cases.
+
+## Template Fields Explained
+
+| Field | Description | Required |
+|-------|-------------|----------|
+| **Name** | Identifier for the template | ✅ |
+| **Category** | Organization/filtering | ✅ |
+| **Prompt Template** | AI instructions with `{{variables}}` | ✅ |
+| **Output Column Name** | What the generated column will be called | ✅ |
+| **Character Limit** | Max characters for output | Optional |
+| **Word Limit** | Max words for output | Optional |
+| **Forbidden Words** | Words that should never appear | Optional |
+| **Reference Columns** | Which CSV columns to use | Optional |
+| **Model** | AI model (gpt-4o-mini default) | Optional |
+| **Temperature** | Creativity level (0-1, default 0.7) | Optional |
+| **Max Tokens** | Output length limit (default 150) | Optional |
+
+## System vs Custom Templates
+
+<Tabs>
+  <Tab title="System Templates">
+    - 17 pre-built templates in Template Library
+    - Created by Smelt
+    - Read-only — cannot edit directly
+    - Click "Duplicate" to customize
+  </Tab>
+  <Tab title="Custom Templates">
+    - Templates you create
+    - Full edit/delete control
+    - Stored in "My Templates"
+    - Used when creating jobs
+  </Tab>
+</Tabs>
+
+## How Templates Work
+
+<Steps>
+  <Step title="You Write a Prompt">
+    Include `{{Column}}` variables that reference your CSV data
+    
+    ```text
+    Write a personalized hook for {{First Name}} at {{Company}} 
+    in the {{Industry}} industry.
+    ```
+  </Step>
+  <Step title="Smelt Reads Each Row">
+    For every row in your CSV, the variables are replaced with actual data
+    
+    ```text
+    Write a personalized hook for Sarah at Acme Corp 
+    in the SaaS industry.
+    ```
+  </Step>
+  <Step title="AI Generates Output">
+    The AI creates unique copy based on that specific lead's data
+    
+    ```text
+    "Scaling a SaaS sales team is no small feat, Sarah—"
+    ```
+  </Step>
+  <Step title="Output Is Saved">
+    The generated copy is saved to your specified output column
+  </Step>
+</Steps>
+
+## Key Concepts
+
+<AccordionGroup>
+  <Accordion title="Variables pull from your data">
+    `{{Company}}` gets replaced with the Company value from each row.
+  </Accordion>
+  <Accordion title="Each row gets unique output">
+    10,000 rows = 10,000 unique AI-generated outputs.
+  </Accordion>
+  <Accordion title="Templates are reusable">
+    Create once, use across multiple jobs and files.
+  </Accordion>
+  <Accordion title="Output columns become personalization fields">
+    The new columns export with your CSV for use in sending tools.
+  </Accordion>
+</AccordionGroup>

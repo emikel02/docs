@@ -1,0 +1,100 @@
+---
+title: Viewing Results
+description: Navigate and understand your generated results
+---
+
+# Viewing Results
+
+After a job completes, view all generated outputs with full details.
+
+## Accessing Results
+
+1. Go to **Jobs** in the sidebar
+2. Click on a completed job
+3. Click **View Results**
+
+## Results Table
+
+The results table shows every processed row:
+
+| Column | Description |
+|--------|-------------|
+| **Row #** | Original row number from CSV |
+| **Original Data** | Key fields from your CSV (expandable) |
+| **Generated Output** | AI-generated copy for each template |
+| **Confidence** | Score based on input data quality (0-100) |
+| **Quality Flags** | Issues detected in the output |
+| **Status** | completed, failed, pending |
+
+## Pagination
+
+Results are paginated for performance:
+- **50 results per page** by default
+- Navigate between pages
+- Large jobs may have many pages
+
+## Sorting Results
+
+Sort the results table by:
+- **Row index** — Original order (default)
+- **Status** — Group by completed/failed
+- **Quality** — Flagged items first/last
+
+## Filtering Results
+
+Filter to find specific results:
+
+<CardGroup cols={2}>
+  <Card title="By Template" icon="file">
+    Show outputs from a specific template only
+  </Card>
+  <Card title="By Status" icon="check">
+    Show only completed or only failed
+  </Card>
+  <Card title="By Quality" icon="flag">
+    Show only flagged or only clean outputs
+  </Card>
+  <Card title="Text Search" icon="search">
+    Search within outputs or original data
+  </Card>
+</CardGroup>
+
+### Common Filter Combinations
+
+| Goal | Filter |
+|------|--------|
+| Find problem outputs | Quality = Has Flags |
+| Review successes | Status = Completed, Quality = No Flags |
+| Check specific template | Template = [select one] |
+| Find specific lead | Text search by name/company |
+
+## Expanding Row Details
+
+Click any row to expand and see:
+- Full original data (all columns)
+- Complete generated output
+- Detailed quality flag information
+- Edit and re-run options
+
+## Understanding the Columns
+
+### Generated Output
+The AI-generated text for each template. If you used multiple templates, each has its own output column.
+
+### Confidence Score
+A 0-100 rating of **input data quality**, not output quality:
+- **80-100:** High — All key data present
+- **50-79:** Medium — Some data missing
+- **0-49:** Low — Significant data gaps
+
+<Note>
+  Low confidence means the AI had less context to work with. The output may be more generic.
+</Note>
+
+### Quality Flags
+Automated warnings about potential issues. See [Quality Flags](/results/quality-flags) for the full list.
+
+### Status
+- **completed** — Successfully generated
+- **failed** — Error occurred
+- **pending** — Not yet processed (job in progress)

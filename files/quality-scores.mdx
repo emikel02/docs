@@ -1,0 +1,89 @@
+---
+title: Quality Scores
+description: Understanding file quality scores and data quality
+---
+
+# Quality Scores
+
+Every uploaded file receives a quality score from 0-100, helping you understand your data's readiness for copy generation.
+
+## How Quality Score Is Calculated
+
+The score starts at 100 and deductions are made for:
+
+| Issue | Max Deduction |
+|-------|---------------|
+| Empty rows | Up to 20 points |
+| Incomplete columns (low avg completeness) | Varies |
+| Data quality issues | Up to 30 points |
+
+## Factors That Increase Score
+
+- ✅ More complete columns (fewer empty cells)
+- ✅ Recognized fields present (name, email, company)
+- ✅ Valid email formats
+- ✅ No empty rows
+- ✅ Critical fields have data
+
+## Factors That Decrease Score
+
+- ❌ Empty rows in your data
+- ❌ Low column completeness (<50% filled)
+- ❌ Invalid email formats
+- ❌ Many empty cells
+- ❌ Missing critical columns
+
+## Score Ranges
+
+| Score | Rating | Recommendation |
+|-------|--------|----------------|
+| **80-100** | Excellent | Great data quality, proceed confidently |
+| **60-79** | Good | Minor issues, should work well |
+| **40-59** | Fair | Review data, consider cleaning |
+| **Below 40** | Poor | Clean data before processing |
+
+## Viewing Your Quality Score
+
+After upload, the file detail page shows:
+
+- **Overall quality score** (0-100)
+- **Column-by-column analysis**
+- **Detected field types**
+- **Duplicate counts**
+
+## How Quality Affects Results
+
+<Note>
+  Quality score reflects your **input data**, not Smelt's output quality.
+</Note>
+
+Higher quality input data leads to:
+- Better personalization (more context for AI)
+- Higher confidence scores on outputs
+- Fewer generic results
+
+Lower quality input data may result in:
+- More generic outputs
+- Lower confidence scores
+- More flagged results
+
+## Improving Your Quality Score
+
+<Steps>
+  <Step title="Remove Empty Rows">
+    Delete any rows without meaningful data
+  </Step>
+  <Step title="Fill Critical Fields">
+    Ensure name, company, and email columns are populated
+  </Step>
+  <Step title="Fix Invalid Emails">
+    Correct obviously wrong email formats
+  </Step>
+  <Step title="Complete Partial Data">
+    Fill in missing job titles, industries, locations where possible
+  </Step>
+</Steps>
+
+<Tip>
+  You don't need a perfect 100 score. Scores above 60 generally work well for most use cases.
+</Tip>

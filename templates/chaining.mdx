@@ -1,0 +1,193 @@
+---
+title: Template Chaining
+description: Use outputs from one template as inputs to another
+---
+
+# Template Chaining
+
+Template chaining lets you use the output from one template as input to another template in a multi-step workflow.
+
+## How Chaining Works
+
+When you run a job with multiple templates:
+
+1. Templates execute **in order** (top to bottom)
+2. Each template's output is added to the row data
+3. Later templates can reference earlier outputs using `{{OutputColumnName}}`
+
+## Chaining Syntax
+
+Use the **Output Column Name** from a previous template:
+
+```text
+Template 1 outputs to column → "Hook"
+Template 2 prompt uses       → {{Hook}}
+```
+
+<Tip>
+  The Output Column Name is set when you create the template. Make it descriptive!
+</Tip>
+
+## Example Workflow
+
+<Steps>
+  <Step title="Template 1: Hook Generator">
+    **Output Column:** `Hook`
+    
+    **Prompt:**
+    ```text
+    Write a personalized opening hook for {{First Name}} at {{Company}}.
+    ```
+    
+    **Generates:** "Scaling a SaaS sales team in Austin's competitive market..."
+  </Step>
+  <Step title="Template 2: Email Body">
+    **Uses:** `{{Hook}}` in prompt
+    
+    **Output Column:** `Email_Body`
+    
+    **Prompt:**
+    ```text
+    Using this opening: {{Hook}}
+    
+    Write the rest of a cold email body about our funding offer.
+    Keep it under 100 words.
+    ```
+    
+    **Generates:** Full email body incorporating the hook
+  </Step>
+  <Step title="Template 3: CTA">
+    **Uses:** `{{Hook}}` and `{{Email_Body}}` in prompt
+    
+    **Output Column:** `CTA`
+    
+    **Prompt:**
+    ```text
+    Based on this email:
+    Hook: {{Hook}}
+    Body: {{Email_Body}}
+    
+    Write a soft call-to-action. One sentence.
+    ```
+    
+    **Generates:** Contextual call-to-action
+  </Step>
+</Steps>
+
+## Setting Up a Chain
+
+<Steps>
+  <Step title="Create Templates with Clear Output Names">
+    Give each template a distinct Output Column Name:
+    - Template 1 → `Hook`
+    - Template 2 → `Pain_Point`  
+    - Template 3 → `CTA`
+  </Step>
+  <Step title="Reference Earlier Outputs">
+    In later templates, use `{{Output_Column_Name}}`:
+    ```text
+    Expand on this hook: {{Hook}}
+    ```
+  </Step>
+  <Step title="Order Templates Correctly in Jobs">
+    When creating a job, arrange templates so dependencies come first
+  </Step>
+</Steps>
+
+---
+
+## Chain Testing Feature
+
+When creating or editing templates with **unresolved variables** (variables not in your CSV), Smelt automatically detects them.
+
+### Unresolved Variables UI
+
+If you use `{{Hook}}` but "Hook" isn't a CSV column, Smelt shows:
+
+<CardGroup cols={2}>
+  <Card title="Link to Source Template" icon="link">
+    Auto-suggested if another template outputs to that column name. Select it to chain.
+  </Card>
+  <Card title="Enter Mock Value" icon="pen">
+    Type a test value manually for testing purposes.
+  </Card>
+</CardGroup>
+
+### How Chain Testing Works
+
+1. Smelt detects unresolved variables in your prompt
+2. Matches them against your other templates' output column names
+3. Suggests linking or lets you enter mock values
+4. Runs the full chain during testing
+5. Shows intermediate outputs from each step
+
+### Chain Test Results
+
+When you run a chain test, you see:
+
+| Info | Description |
+|------|-------------|
+| **Step numbers** | Each template numbered in execution order |
+| **Intermediate outputs** | What each template generated |
+| **Current template** | Highlighted as the one you're testing |
+| **Token usage** | Per-step and total token counts |
+| **Cost** | Per-step and total cost |
+| **Quality flags** | Flags for each step's output |
+| **Duration** | Time taken for the full chain |
+
+<Note>
+  Chain testing runs the full chain so you can verify the workflow works before running a real job.
+</Note>
+
+---
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Keep output column names simple">
+    Use names like `Hook`, `Pain_Point`, `CTA` rather than long descriptions.
+  </Accordion>
+  <Accordion title="Test chains before bulk runs">
+    Use chain testing to verify your multi-template workflow works correctly.
+  </Accordion>
+  <Accordion title="Order matters in jobs">
+    In the job wizard, arrange templates so dependencies come first.
+  </Accordion>
+  <Accordion title="Use mock values for testing">
+    If you don't have a source template yet, enter mock values to test your prompt.
+  </Accordion>
+  <Accordion title="Don't over-chain">
+    2-4 templates in a chain is usually optimal. More can increase cost and complexity.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Common Chain Patterns
+
+### Pattern 1: Hook → Body → CTA
+Classic cold email structure built step by step.
+
+### Pattern 2: Research → Personalization
+First template extracts insights, second uses them for copy.
+
+### Pattern 3: Draft → Refinement
+First template writes rough copy, second polishes it.
+
+### Pattern 4: Qualification → Messaging
+First template scores/qualifies lead, second adjusts messaging based on score.
+
+---
+
+## Chain Limitations
+
+<Warning>
+  Each template in a chain consumes usage. A 3-template chain on 1,000 rows = 3,000 usage.
+</Warning>
+
+| Consideration | Note |
+|--------------|------|
+| **Usage multiplier** | Templates × Rows = Total usage |
+| **Cost increases** | More templates = more API calls |
+| **Error propagation** | Bad output in step 1 affects later steps |
+| **Ordering is fixed** | Templates run top-to-bottom, no conditional logic |

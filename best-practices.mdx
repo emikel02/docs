@@ -1,0 +1,186 @@
+---
+title: Best Practices
+description: Tips for getting the best results from Smelt
+---
+
+# Best Practices
+
+Get the most out of Smelt with these proven tips.
+
+---
+
+## Data Preparation
+
+<AccordionGroup>
+  <Accordion title="Clean your CSV before upload">
+    - Remove empty rows
+    - Trim whitespace from cells
+    - Fix obvious typos in company names
+    - Standardize job titles where possible
+  </Accordion>
+  
+  <Accordion title="Use consistent column naming">
+    Keep column names consistent across files if you reuse templates. `Company` and `Company Name` are different variables.
+  </Accordion>
+  
+  <Accordion title="Deduplicate before upload">
+    While Smelt detects duplicates, removing them beforehand saves processing and usage.
+  </Accordion>
+  
+  <Accordion title="Include rich data fields">
+    The more context you provide, the better the personalization:
+    - Job title + seniority level
+    - Industry + sub-industry
+    - Company size + growth stage
+    - Location (city, not just country)
+    - Recent news or funding info
+  </Accordion>
+  
+  <Accordion title="Use UTF-8 encoding">
+    When exporting from Excel or Google Sheets, always choose UTF-8 for best compatibility.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Template Writing
+
+<AccordionGroup>
+  <Accordion title="Be specific about output format">
+    Tell the AI exactly what you want:
+    
+    ❌ "Write a hook"
+    
+    ✅ "Write a 1-sentence opening hook under 150 characters. Start with their pain point, not a compliment."
+  </Accordion>
+  
+  <Accordion title="Include examples in your prompt">
+    Show the AI what good output looks like:
+    
+    ```
+    Example outputs:
+    - "Scaling a SaaS team in Austin's competitive market takes serious capital—"
+    - "Construction projects don't wait for slow bank approvals—"
+    ```
+  </Accordion>
+  
+  <Accordion title="Specify what NOT to include">
+    Use forbidden words and explicit instructions:
+    
+    ```
+    Do NOT include:
+    - Generic phrases like "hope this finds you well"
+    - Questions in the opening line
+    - The word "excited"
+    ```
+  </Accordion>
+  
+  <Accordion title="Set appropriate length limits">
+    - **Hooks:** 100-200 characters
+    - **Pain points:** 150-300 characters
+    - **Full emails:** 500-1000 characters
+    - **CTAs:** 50-100 characters
+  </Accordion>
+  
+  <Accordion title="Use all relevant variables">
+    Reference your data in the prompt:
+    
+    ```
+    Write a hook for {{First Name}}, a {{Job Title}} at {{Company}} 
+    in {{City}}, {{Industry}} industry.
+    ```
+  </Accordion>
+  
+  <Accordion title="Test before bulk runs">
+    Always test on 5-10 rows before running thousands. It's worth the small usage cost to catch prompt issues early.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Cost Optimization
+
+<AccordionGroup>
+  <Accordion title="Use BYOK for high volume">
+    If processing 10,000+ rows/month, BYOK saves significant money. You pay ~$0.001-0.002 per row vs $0.02-0.10 on per-credit platforms.
+  </Accordion>
+  
+  <Accordion title="Test on small row ranges first">
+    When creating a new job, start with 10-50 rows to verify output quality. Then scale up.
+  </Accordion>
+  
+  <Accordion title="Reuse templates across jobs">
+    Build a library of tested templates. Reuse them rather than recreating from scratch each time.
+  </Accordion>
+  
+  <Accordion title="Monitor usage regularly">
+    Check Settings → Billing to track your usage against limits. Avoid surprises.
+  </Accordion>
+  
+  <Accordion title="Be strategic with template chains">
+    Each template in a chain multiplies usage:
+    - 1,000 rows × 1 template = 1,000 usage
+    - 1,000 rows × 3 templates = 3,000 usage
+    
+    Only chain when you need the output dependency.
+  </Accordion>
+  
+  <Accordion title="Batch similar campaigns">
+    If running multiple campaigns with the same template, combine into one job when possible.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Quality Optimization
+
+<AccordionGroup>
+  <Accordion title="Review flagged outputs first">
+    Filter results by "has flags" and review those first. They're most likely to need edits.
+  </Accordion>
+  
+  <Accordion title="Use forbidden words strategically">
+    Add words that don't fit your brand:
+    - Competitor names
+    - Overused phrases ("synergy", "leverage")
+    - Words that trigger spam filters
+  </Accordion>
+  
+  <Accordion title="Iterate on your prompts">
+    If outputs are consistently off, revise the prompt:
+    1. Run small test batch
+    2. Review outputs
+    3. Identify patterns in bad outputs
+    4. Adjust prompt
+    5. Repeat
+  </Accordion>
+  
+  <Accordion title="Add context to your templates">
+    Help the AI understand your product/offer:
+    
+    ```
+    Context: We provide fast business funding ($10K-$500K) 
+    with approval in 24 hours. Our target is small businesses 
+    that need capital quickly.
+    ```
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Workflow Tips
+
+<CardGroup cols={2}>
+  <Card title="Start Simple" icon="seedling">
+    Begin with 1 template (hook or first line). Add more templates after you've validated quality.
+  </Card>
+  <Card title="Document Your Templates" icon="file-lines">
+    Use clear names: "SaaS Hook v2 - Pain Focus" not "Template 1"
+  </Card>
+  <Card title="Version Your Templates" icon="code-branch">
+    When iterating, duplicate and rename: "Hook v1" → "Hook v2" rather than editing in place.
+  </Card>
+  <Card title="Export Regularly" icon="download">
+    Download results after each job completes. Don't rely on Smelt as long-term storage.
+  </Card>
+</CardGroup>

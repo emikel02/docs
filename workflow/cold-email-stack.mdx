@@ -1,0 +1,164 @@
+---
+title: Cold Email Workflow
+description: Where Smelt fits in your cold email tech stack
+---
+
+# Cold Email Workflow
+
+Smelt is **Stage 3** in the cold email workflow. Here's how it fits with your other tools.
+
+## The 4-Stage Workflow
+
+```
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│  STAGE 1    │    │  STAGE 2    │    │  STAGE 3    │    │  STAGE 4    │
+│  Find Leads │ → │ Enrich Data │ → │   Generate  │ → │ Send Emails │
+│             │    │             │    │    Copy     │    │             │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+     Apollo            Clay              SMELT            Instantly
+     ListKit           Clearbit          ← YOU ARE        Lemlist
+     ZoomInfo          Apollo             HERE            Smartlead
+     LinkedIn          enrichment
+```
+
+## Stage-by-Stage
+
+<Steps>
+  <Step title="Stage 1: Find Leads">
+    Build your lead list with contact data.
+    
+    **Tools:** Apollo, ListKit, ZoomInfo, LinkedIn Sales Navigator
+    
+    **Output:** CSV with names, emails, companies, titles
+  </Step>
+  
+  <Step title="Stage 2: Enrich Data">
+    Add more data points to your leads.
+    
+    **Tools:** Clay, Clearbit, Apollo enrichment
+    
+    **Output:** CSV with additional fields (industry, revenue, tech stack, funding, etc.)
+  </Step>
+  
+  <Step title="Stage 3: Generate Copy (Smelt)">
+    Turn your enriched data into personalized copy.
+    
+    **Tool:** Smelt
+    
+    **Output:** CSV with new AI-generated columns (hooks, pain points, CTAs)
+  </Step>
+  
+  <Step title="Stage 4: Send Emails">
+    Import your personalized CSV and send.
+    
+    **Tools:** Instantly, Lemlist, Smartlead, Apollo sequences
+    
+    **Output:** Emails in inboxes → Replies → Revenue
+  </Step>
+</Steps>
+
+## Integration Examples
+
+<Tabs>
+  <Tab title="Apollo → Smelt → Instantly">
+    **Simple flow without enrichment:**
+    
+    1. Export leads from Apollo as CSV
+    2. Upload to Smelt
+    3. Generate personalized hooks and pain points
+    4. Export from Smelt
+    5. Import to Instantly with personalization columns
+    6. Send campaigns
+  </Tab>
+  <Tab title="ListKit → Clay → Smelt → Lemlist">
+    **Full enrichment flow:**
+    
+    1. Buy leads from ListKit
+    2. Enrich in Clay (add company data, tech stack, funding)
+    3. Export Clay CSV to Smelt
+    4. Generate personalized copy
+    5. Export from Smelt
+    6. Import to Lemlist
+    7. Send sequences
+  </Tab>
+  <Tab title="ZoomInfo → Smelt → Smartlead">
+    **Enterprise data flow:**
+    
+    1. Export contacts from ZoomInfo (already enriched)
+    2. Upload directly to Smelt
+    3. Generate hooks, pain points, CTAs
+    4. Export from Smelt
+    5. Import to Smartlead
+    6. Send campaigns
+  </Tab>
+</Tabs>
+
+## CSV Column Mapping
+
+Your sending tool uses Smelt's output columns as personalization variables:
+
+| Smelt Output Column | In Instantly | In Lemlist | In Smartlead |
+|---------------------|--------------|------------|--------------|
+| `Hook` | `{{Hook}}` | `{{Hook}}` | `{{Hook}}` |
+| `Pain_Point` | `{{Pain_Point}}` | `{{Pain_Point}}` | `{{Pain_Point}}` |
+| `CTA` | `{{CTA}}` | `{{CTA}}` | `{{CTA}}` |
+| `First_Line` | `{{First_Line}}` | `{{First_Line}}` | `{{First_Line}}` |
+
+<Tip>
+  Name your output columns clearly—they become the personalization variables in your sending tool!
+</Tip>
+
+## Why Smelt vs. Built-In AI?
+
+Many sending tools have built-in AI personalization. Here's why Smelt is different:
+
+| Feature | Smelt | Built-in AI (Instantly, Lemlist) |
+|---------|-------|----------------------------------|
+| **Pricing** | BYOK (10-50x cheaper) | Per-credit |
+| **Custom prompts** | Fully customizable | Limited options |
+| **Quality scoring** | 11 quality flags + auto-fix | Basic or none |
+| **Template chaining** | ✅ Multi-step workflows | ❌ |
+| **Template library** | 17 pre-built templates | Varies |
+| **Batch testing** | ✅ Before full runs | Limited |
+| **Works with any sender** | ✅ CSV export | Locked into platform |
+| **Cost transparency** | See exact API costs | Hidden in credits |
+
+## The Cost Advantage
+
+**Example: 50,000 leads/month with 2 templates = 100,000 AI generations**
+
+| Method | Cost |
+|--------|------|
+| Clay AI credits | $2,000 - $10,000 |
+| Instantly AI credits | $500 - $2,000 |
+| **Smelt BYOK** | **$100 - $200** |
+
+<Note>
+  Smelt isn't replacing your sending tool—it's giving you better personalization before you send.
+</Note>
+
+## What If I Don't Have Enriched Data?
+
+Smelt works with whatever data you have:
+
+| Your Data | What Smelt Can Do |
+|-----------|-------------------|
+| Just name, email, company | Generate basic personalization |
+| + Job title, industry | Generate role-specific messaging |
+| + Location, company size | Add regional/scale context |
+| + Tech stack, funding | Deep personalization with specifics |
+
+<Tip>
+  More data = better personalization. But even basic fields (name, company, title) create significantly better results than generic templates.
+</Tip>
+
+## Recommended Stacks
+
+### Budget-Friendly
+**Apollo** (find + light enrich) → **Smelt** (generate) → **Instantly** (send)
+
+### High Volume
+**ListKit** (find) → **Clay** (enrich) → **Smelt** (generate) → **Smartlead** (send)
+
+### Enterprise
+**ZoomInfo** (find + enrich) → **Smelt** (generate) → **Outreach/Salesloft** (send)

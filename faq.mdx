@@ -1,0 +1,144 @@
+---
+title: FAQ
+description: Frequently asked questions about Smelt
+---
+
+# Frequently Asked Questions
+
+## General
+
+<AccordionGroup>
+  <Accordion title="What is Smelt?">
+    Smelt is an AI-powered copy generation platform for creating personalized cold email content at scale. Upload your lead CSV, choose templates, and generate unique personalized copy for every prospect.
+  </Accordion>
+  
+  <Accordion title="How is Smelt different from ChatGPT?">
+    Smelt is designed for **batch processing**. ChatGPT can write one email at a time—you'd copy/paste each lead's info manually. Smelt reads your entire CSV and generates unique copy for every lead automatically, with quality scoring and export features.
+  </Accordion>
+  
+  <Accordion title="How is Smelt different from Clay?">
+    Different stages of the workflow:
+    - **Clay** = Data enrichment (finding information about leads)
+    - **Smelt** = Copy generation (writing personalized messages using your data)
+    
+    Many users use both: Clay to enrich, then Smelt to write.
+  </Accordion>
+  
+  <Accordion title="What AI model does Smelt use?">
+    GPT-4o-mini by default. This provides excellent quality at low cost. Model selection may expand in future updates.
+  </Accordion>
+  
+  <Accordion title="What sending tools work with Smelt?">
+    Any tool that accepts CSV import:
+    - Instantly
+    - Lemlist
+    - Smartlead
+    - Apollo sequences
+    - Any custom sending infrastructure
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Pricing & Billing
+
+<AccordionGroup>
+  <Accordion title="How much does Smelt cost?">
+    - **Free tier:** $0 for 250 rows/month
+    - **Starter:** $29/mo (BYOK) or $49/mo (Managed) for 5,000 rows
+    - **Growth:** $79/mo (BYOK) or $129/mo (Managed) for 25,000 rows
+    - **Scale:** $199/mo (BYOK) or $299/mo (Managed) for 100,000 rows
+  </Accordion>
+  
+  <Accordion title="What's the difference between BYOK and Managed?">
+    - **BYOK (Bring Your Own Key):** You provide your OpenAI API key and pay OpenAI directly for AI costs. Lower monthly fee.
+    - **Managed:** Smelt handles all AI costs. No API key needed. Simpler billing, slightly higher monthly fee.
+  </Accordion>
+  
+  <Accordion title="Do template tests count toward usage?">
+    **Yes!** Each test counts as 1 row of usage. Test strategically to conserve your allowance.
+  </Accordion>
+  
+  <Accordion title="Do unused rows roll over?">
+    **No.** Usage resets at the start of each billing cycle. Unused rows do not roll over.
+  </Accordion>
+  
+  <Accordion title="What happens if I hit my limit?">
+    Jobs are blocked from starting. You'll see a clear error message with your usage details and an option to upgrade.
+  </Accordion>
+  
+  <Accordion title="Can I upgrade mid-cycle?">
+    Yes! Your new limit takes effect immediately. You're prorated for the billing change.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Technical
+
+<AccordionGroup>
+  <Accordion title="What file formats are supported?">
+    **CSV only.** Maximum 50MB file size, up to 50,000 rows per file.
+  </Accordion>
+  
+  <Accordion title="What encoding should I use?">
+    **UTF-8 recommended.** Also supports UTF-16, Latin-1, and Windows-1252.
+  </Accordion>
+  
+  <Accordion title="Can I use my own AI prompts?">
+    Yes! Create fully custom templates with your own prompts. Use `{{Column}}` variables to reference your CSV data.
+  </Accordion>
+  
+  <Accordion title="Can I edit outputs after generation?">
+    Yes! Inline editing is available in the results view. Quality flags are automatically rechecked after edits.
+  </Accordion>
+  
+  <Accordion title="What are quality flags?">
+    Automated warnings about potential issues in generated output. Smelt checks for 11 different issues including length problems, forbidden words, AI-speak, placeholders, and more.
+  </Accordion>
+  
+  <Accordion title="What is template chaining?">
+    Using the output from one template as input to another. For example: Template 1 generates a hook → Template 2 uses that hook to write the email body.
+  </Accordion>
+  
+  <Accordion title="How long do jobs take?">
+    Depends on row count. Smelt processes 5 rows in parallel. Rough estimates:
+    - 100 rows: ~1-2 minutes
+    - 1,000 rows: ~10-15 minutes
+    - 10,000 rows: ~1-2 hours
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Security
+
+<AccordionGroup>
+  <Accordion title="Is my data secure?">
+    Yes. Files are stored in encrypted cloud storage (AWS S3). Your data is isolated—other users cannot see it.
+  </Accordion>
+  
+  <Accordion title="How are API keys stored?">
+    API keys are encrypted with **AES-256-GCM** encryption. They are never stored in plain text and never visible after saving.
+  </Accordion>
+  
+  <Accordion title="Who can see my data?">
+    Only you. All data is isolated per account. Smelt staff do not access customer data except for support requests with explicit permission.
+  </Accordion>
+  
+  <Accordion title="Can I delete my data?">
+    Yes. You can delete individual files from the Files page. Deleting a file removes it from cloud storage.
+  </Accordion>
+  
+  <Accordion title="Does Smelt train on my data?">
+    No. Your data is used only to generate your outputs. It is not used to train any AI models.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Still Have Questions?
+
+<Card title="Contact Support" icon="envelope" href="mailto:support@getsmelt.io">
+  Email us at support@getsmelt.io
+</Card>

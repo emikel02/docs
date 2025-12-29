@@ -1,0 +1,198 @@
+---
+title: Common Issues
+description: Solutions to frequently encountered problems
+---
+
+# Common Issues
+
+Quick solutions to problems you might encounter.
+
+## File Upload Issues
+
+<AccordionGroup>
+  <Accordion title="File upload fails immediately">
+    **Possible causes:**
+    - File is not a CSV
+    - File is larger than 50MB
+    - File is empty
+    
+    **Solutions:**
+    - Export from your source as CSV
+    - Split large files into smaller batches
+    - Verify file has data rows
+  </Accordion>
+  
+  <Accordion title="Garbled characters in preview">
+    **Cause:** Encoding mismatch
+    
+    **Solution:** Re-export your file as UTF-8:
+    - Excel: Save As → CSV UTF-8
+    - Google Sheets: File → Download → CSV (auto UTF-8)
+  </Accordion>
+  
+  <Accordion title="Columns not detected correctly">
+    **Cause:** Non-standard column names
+    
+    **Solution:** Column detection is just for display. Use exact column names from your CSV in templates with `{{Column Name}}` syntax.
+  </Accordion>
+  
+  <Accordion title="Quality score is low">
+    **Cause:** Missing data, empty cells, or data quality issues
+    
+    **Solutions:**
+    - Fill in missing critical fields (name, company, email)
+    - Remove empty rows
+    - Fix invalid email formats
+  </Accordion>
+</AccordionGroup>
+
+## Template Issues
+
+<AccordionGroup>
+  <Accordion title="Variables not being replaced">
+    **Cause:** Column name mismatch
+    
+    **Solution:** 
+    - Check exact column name in your CSV
+    - Use `{{Exact Column Name}}` with exact spelling
+    - Column matching is case-insensitive
+  </Accordion>
+  
+  <Accordion title="Output is too generic">
+    **Causes:**
+    - Prompt too vague
+    - Not enough variables used
+    - Missing data in CSV
+    
+    **Solutions:**
+    - Add more specific instructions
+    - Reference more columns
+    - Check that CSV has data in referenced columns
+  </Accordion>
+  
+  <Accordion title="Output ignores my instructions">
+    **Causes:**
+    - Instructions buried in long prompt
+    - Conflicting instructions
+    
+    **Solutions:**
+    - Put key instructions at the end of prompt
+    - Use "IMPORTANT:" prefix
+    - Simplify conflicting requirements
+  </Accordion>
+  
+  <Accordion title="AI adds unwanted text">
+    **Examples:** "Here's a hook:", "Let me know!"
+    
+    **Solution:** Smelt auto-fixes most of these. If you still see them:
+    - Add explicit instruction: "Do not include any preamble or sign-off"
+    - Edit manually if occasional
+  </Accordion>
+</AccordionGroup>
+
+## Job Issues
+
+<AccordionGroup>
+  <Accordion title="Job won't start">
+    **Possible causes:**
+    - Usage limit exceeded
+    - No templates selected
+    - File was deleted
+    
+    **Solutions:**
+    - Check Settings > Billing for usage
+    - Ensure templates are selected in wizard
+    - Verify source file exists
+  </Accordion>
+  
+  <Accordion title="Job is stuck 'running'">
+    **Possible causes:**
+    - API rate limiting
+    - Network issues
+    - Large job still processing
+    
+    **Solutions:**
+    - Wait a few minutes (rate limits auto-resolve)
+    - Check job progress—large jobs take time
+    - Pause and resume if stuck too long
+  </Accordion>
+  
+  <Accordion title="Many rows failed">
+    **Possible causes:**
+    - API key issues
+    - Data problems in specific rows
+    - Rate limiting
+    
+    **Solutions:**
+    - Check API key in Settings
+    - Review failed rows for patterns
+    - Re-run failed rows (auto-retry handles most issues)
+  </Accordion>
+</AccordionGroup>
+
+## API Key Issues
+
+<AccordionGroup>
+  <Accordion title="'Invalid API key' error">
+    **Causes:**
+    - Typo in key
+    - Key was revoked at OpenAI
+    - Key expired
+    
+    **Solutions:**
+    - Re-enter key carefully (no extra spaces)
+    - Generate new key at platform.openai.com
+    - Delete old key in Smelt, add new one
+  </Accordion>
+  
+  <Accordion title="'Insufficient credits' error">
+    **Cause:** OpenAI account has no credits
+    
+    **Solution:** Add credits at platform.openai.com/account/billing
+  </Accordion>
+  
+  <Accordion title="'Rate limit exceeded' error">
+    **Cause:** Too many requests to OpenAI
+    
+    **Solution:** 
+    - Wait 1 minute (auto-retries handle this)
+    - For persistent issues, check OpenAI tier limits
+  </Accordion>
+</AccordionGroup>
+
+## Account Issues
+
+<AccordionGroup>
+  <Accordion title="Can't log in">
+    **Solutions:**
+    - Check email spelling
+    - Use "Forgot Password" to reset
+    - Wait 15 minutes if rate limited (too many attempts)
+  </Accordion>
+  
+  <Accordion title="Password reset link not arriving">
+    **Solutions:**
+    - Check spam/junk folder
+    - Verify email address is correct
+    - Wait a few minutes (email can be delayed)
+    - Request new reset link
+  </Accordion>
+  
+  <Accordion title="Usage not updating after upgrade">
+    **Solution:** 
+    - Usage resets at start of new billing cycle
+    - Upgrading increases limit but doesn't reset used count
+    - Contact support if limits seem wrong
+  </Accordion>
+</AccordionGroup>
+
+## Still Stuck?
+
+If you can't resolve your issue:
+
+1. Check the [Error Messages](/troubleshooting/error-messages) page for specific errors
+2. Review the [FAQ](/faq) for common questions
+3. Contact support@getsmelt.io with:
+   - What you were trying to do
+   - The exact error message
+   - Screenshots if helpful

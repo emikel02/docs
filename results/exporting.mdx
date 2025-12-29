@@ -1,0 +1,132 @@
+---
+title: Exporting Results
+description: Download your results as CSV for use in email tools
+---
+
+# Exporting Results
+
+Export your generated results as a CSV file, ready to import into your email sending tool.
+
+## How to Export
+
+<Steps>
+  <Step title="Open Job Results">
+    Go to Jobs → Click a job → View Results
+  </Step>
+  <Step title="Click Export">
+    Click the **Export** button
+  </Step>
+  <Step title="Configure Options">
+    Choose which columns to include (optional)
+  </Step>
+  <Step title="Download">
+    CSV file downloads to your computer
+  </Step>
+</Steps>
+
+## Export Format
+
+Exports are CSV files containing:
+
+| Included | Description |
+|----------|-------------|
+| **Original data** | All columns from your uploaded CSV |
+| **Generated outputs** | New columns for each template's output |
+| **Confidence scores** | Optional — input data quality scores |
+| **Quality flags** | Optional — issues detected |
+
+### Example Export
+
+**Input CSV had:**
+```
+Name, Company, Email, City
+```
+
+**After job with 2 templates (Hook, CTA), export has:**
+```
+Name, Company, Email, City, Hook, CTA
+```
+
+## Column Selection
+
+When exporting, you can choose:
+
+- **All columns** — Everything including metadata
+- **Essential columns** — Original data + generated outputs only
+- **Custom selection** — Pick exactly which columns you need
+
+<Tip>
+  For email tools, usually you only need original data + generated outputs. Scores and flags are for your review, not for sending.
+</Tip>
+
+## Using Exports with Email Tools
+
+Your exported CSV works directly with:
+
+<CardGroup cols={2}>
+  <Card title="Instantly" icon="bolt">
+    Import CSV, map columns to personalization variables
+  </Card>
+  <Card title="Lemlist" icon="lemon">
+    Upload CSV, use column names as {{variables}}
+  </Card>
+  <Card title="Smartlead" icon="brain">
+    Import CSV, configure personalization fields
+  </Card>
+  <Card title="Apollo" icon="rocket">
+    Import to sequences with custom fields
+  </Card>
+</CardGroup>
+
+### Column Mapping
+
+Your output column names become personalization variables:
+
+| Smelt Column | In Instantly | In Lemlist |
+|--------------|--------------|------------|
+| `Hook` | `{{Hook}}` | `{{Hook}}` |
+| `Pain_Point` | `{{Pain_Point}}` | `{{Pain_Point}}` |
+| `CTA` | `{{CTA}}` | `{{CTA}}` |
+
+<Tip>
+  Use clear, simple output column names like `Hook` or `CTA`. They become the variables you'll use in your sending tool.
+</Tip>
+
+## Export Filtering
+
+You can export a filtered subset:
+
+1. Apply filters in the results view (e.g., "No flags only")
+2. Click Export
+3. Only filtered results are exported
+
+**Use cases:**
+- Export only approved results
+- Export only completed (not failed) rows
+- Export results for a specific template
+
+## Handling Large Exports
+
+For jobs with many thousands of rows:
+
+- Export may take a few seconds to generate
+- File downloads when ready
+- Large CSVs open fine in Excel/Sheets
+
+## Re-importing to Smelt
+
+You can use an exported CSV as input for future jobs:
+
+1. Export results from Job A
+2. Upload that CSV as a new file
+3. The AI-generated columns are now available as variables
+4. Create new templates that reference those columns
+
+This enables **multi-stage workflows**:
+- Stage 1 job generates hooks
+- Export, re-upload
+- Stage 2 job generates full emails using the hooks
+
+<Note>
+  For simpler multi-template workflows, use [template chaining](/templates/chaining) within a single job.
+</Note>

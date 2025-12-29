@@ -1,0 +1,153 @@
+---
+title: Security
+description: How Smelt keeps your data and API keys secure
+---
+
+# Security
+
+Understanding how Smelt protects your data, API keys, and account.
+
+## API Key Security
+
+### Encryption
+
+Your API keys are encrypted using **AES-256-GCM**:
+
+- Industry-standard encryption
+- Keys are encrypted at rest
+- Decrypted only when needed for API calls
+
+### Storage
+
+| Aspect | How It Works |
+|--------|--------------|
+| **At rest** | Encrypted in database |
+| **In transit** | HTTPS/TLS encryption |
+| **Display** | Never shown after saving |
+| **Access** | Only your account can use your keys |
+
+### What We Never Do
+
+- ❌ Store keys in plain text
+- ❌ Log keys in application logs
+- ❌ Share keys between accounts
+- ❌ Display keys after initial entry
+
+<Note>
+  Once you save an API key, you cannot view it again. You can only delete and add a new one.
+</Note>
+
+## Data Security
+
+### Your CSV Data
+
+| Aspect | Protection |
+|--------|------------|
+| **Storage** | Encrypted cloud storage (AWS S3) |
+| **Access** | Isolated per account |
+| **Transmission** | HTTPS/TLS encrypted |
+| **Retention** | You control deletion |
+
+### Data Isolation
+
+Your data is completely isolated:
+
+- Other users cannot see your files
+- Other users cannot see your results
+- Other users cannot see your templates
+- No cross-account data access
+
+### AI Processing
+
+When BYOK mode is used:
+- Data goes directly to OpenAI under your API key
+- No third-party AI intermediaries
+- Subject to OpenAI's data policies
+
+When Managed mode is used:
+- Data goes to OpenAI under Smelt's API key
+- Same OpenAI data policies apply
+
+## Account Security
+
+### Password Protection
+
+- Passwords hashed with bcrypt (cost factor 12)
+- Never stored in plain text
+- Rate limiting on login attempts (5 attempts / 15 min)
+- Rate limiting on registration (3 / hour)
+
+### Session Security
+
+- JWT-based sessions
+- 30-day session duration
+- Automatic logout after inactivity
+
+### Password Reset
+
+- Secure token-based reset
+- Tokens expire after 1 hour
+- Tokens are single-use
+- Rate limited (3 requests / hour / email)
+
+## Infrastructure Security
+
+### Application Security
+
+| Measure | Implementation |
+|---------|----------------|
+| **Security headers** | X-Frame-Options, CSP, etc. |
+| **HTTPS** | All traffic encrypted |
+| **Rate limiting** | Protected endpoints |
+| **Input validation** | All user input validated |
+
+### Data Backup
+
+- Regular database backups
+- Encrypted backup storage
+- Point-in-time recovery capability
+
+## Compliance Considerations
+
+### GDPR
+
+For EU users:
+- You can request data export
+- You can request account deletion
+- Data processing documented
+
+### Data Retention
+
+- Data retained while account active
+- Deleted upon account deletion request
+- No automatic data mining or resale
+
+## Security Best Practices
+
+<AccordionGroup>
+  <Accordion title="Use a strong password">
+    At least 12 characters with mixed case, numbers, and symbols.
+  </Accordion>
+  <Accordion title="Don't share API keys">
+    Never share your OpenAI API key. Create separate keys per service.
+  </Accordion>
+  <Accordion title="Use dedicated API keys">
+    Create an API key specifically for Smelt so you can track and revoke it separately.
+  </Accordion>
+  <Accordion title="Monitor API usage">
+    Regularly check your OpenAI usage dashboard for unexpected activity.
+  </Accordion>
+  <Accordion title="Set spending limits">
+    Configure spending limits in OpenAI to prevent unexpected costs.
+  </Accordion>
+</AccordionGroup>
+
+## Reporting Security Issues
+
+If you discover a security vulnerability:
+
+1. Email security@getsmelt.io
+2. Do not publicly disclose until resolved
+3. We'll respond within 48 hours
+
+We take security reports seriously and appreciate responsible disclosure.

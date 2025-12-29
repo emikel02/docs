@@ -1,0 +1,116 @@
+---
+title: Error Messages
+description: Complete reference of error messages and how to fix them
+---
+
+# Error Messages
+
+Complete reference of all error messages you might see in Smelt.
+
+## File Upload Errors
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| "File contains no data rows" | Empty CSV or only headers | Verify file has data rows, not just headers |
+| "No columns detected" | Missing header row | Add a header row to your CSV |
+| "File too large" | Over 50MB | Split into smaller files (under 50MB each) |
+| "Invalid file format" | Not a CSV file | Export from source as CSV format |
+| "Encoding error" | Unsupported character encoding | Re-save file as UTF-8 |
+| "File processing failed" | Corrupted or malformed file | Re-export from original source |
+| "Too many columns" | Over 100 columns | Remove unnecessary columns |
+| "Too many rows" | Over 50,000 rows | Split into multiple files |
+
+## Job Errors
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| "Usage limit exceeded" | Monthly row limit reached | Upgrade plan or wait for cycle reset |
+| "No templates selected" | Forgot to select templates | Select at least one template in wizard |
+| "Invalid row range" | Start row greater than end row | Fix row range (start must be ≤ end) |
+| "Template not found" | Template was deleted | Select a different template |
+| "File not found" | Source file was deleted | Upload file again or select different file |
+| "Job timed out" | Very large job or network issues | Split into smaller batches, retry |
+| "Insufficient rows remaining" | Requested more than available | Reduce row range or upgrade plan |
+
+## API Key Errors
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| "Invalid API key" | Wrong key or revoked | Re-enter key or generate new one at OpenAI |
+| "API key expired" | Key was revoked at OpenAI | Generate new key at platform.openai.com |
+| "Rate limit exceeded" | Too many API requests | Wait 1 minute, Smelt auto-retries |
+| "Insufficient credits" | OpenAI account has no credits | Add credits at platform.openai.com |
+| "API key not configured" | BYOK mode but no key added | Add your API key in Settings |
+| "Invalid API key format" | Key doesn't start with sk- | Ensure you copied the full key correctly |
+
+## Authentication Errors
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| "Invalid credentials" | Wrong email or password | Check spelling, use password reset if needed |
+| "Account not found" | Email not registered | Create a new account |
+| "Too many login attempts" | Rate limit triggered | Wait 15 minutes before trying again |
+| "Reset link expired" | Password reset link older than 1 hour | Request a new password reset |
+| "Reset link already used" | Link was already used | Request a new password reset |
+| "Email already registered" | Trying to register existing email | Log in instead, or use password reset |
+
+## Template Errors
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| "Template name required" | Empty name field | Enter a template name |
+| "Prompt template required" | Empty prompt field | Enter your prompt instructions |
+| "Invalid variable syntax" | Malformed `{{variable}}` | Check variable format (double braces) |
+| "Output column name required" | Empty output column field | Enter an output column name |
+| "Cannot edit system template" | Trying to edit default template | Duplicate it first, then edit the copy |
+| "Cannot delete system template" | Trying to delete default template | System templates cannot be deleted |
+
+## Network Errors
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| "Network error" | Connection issue | Check internet connection, retry |
+| "Request timeout" | Slow connection or large request | Retry, or try smaller batch |
+| "Service unavailable" | Smelt or OpenAI temporarily down | Wait a few minutes and retry |
+| "Connection refused" | Network blocking | Check firewall/VPN settings |
+
+## Billing Errors
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| "Payment failed" | Card declined or expired | Update payment method in billing portal |
+| "Subscription not found" | Billing sync issue | Contact support@getsmelt.io |
+| "Invalid plan selection" | Plan no longer available | Select a different plan |
+
+## Export Errors
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| "No results to export" | Job has no completed results | Wait for job to complete or check for failures |
+| "Export failed" | Server error during export | Retry, contact support if persistent |
+
+## Quality Flag "Errors"
+
+These aren't errors, but warnings about output quality:
+
+| Flag | Meaning | Action |
+|------|---------|--------|
+| `forbidden_word` | Output contains banned word | Edit to remove, or update forbidden words list |
+| `has_placeholder` | Output has unfilled [Name] etc. | Check CSV has data, edit to fix |
+| `has_ai_speak` | Output says "As an AI..." | Edit to remove, improve prompt |
+
+See [Quality Flags](/results/quality-flags) for the complete list.
+
+---
+
+## Getting Help
+
+If you encounter an error not listed here:
+
+1. **Screenshot the error** — Include the full message
+2. **Note what you were doing** — Which action triggered it
+3. **Contact support** — Email support@getsmelt.io
+
+<Tip>
+  Most errors include guidance in the message itself. Read the full error text for specific instructions.
+</Tip>

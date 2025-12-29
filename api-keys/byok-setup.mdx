@@ -1,0 +1,153 @@
+---
+title: BYOK Setup
+description: How to set up Bring Your Own Key with your OpenAI API key
+---
+
+# BYOK Setup
+
+Set up Bring Your Own Key to use your own OpenAI API key and pay raw API costs.
+
+## Prerequisites
+
+Before setting up BYOK:
+
+- [ ] Paid Smelt subscription (Starter, Growth, or Scale)
+- [ ] BYOK billing mode selected
+- [ ] OpenAI account at platform.openai.com
+- [ ] OpenAI API key with credits
+
+## Getting Your OpenAI API Key
+
+<Steps>
+  <Step title="Go to OpenAI Platform">
+    Visit [platform.openai.com](https://platform.openai.com)
+  </Step>
+  <Step title="Sign Up or Log In">
+    Create an account or log in to existing account
+  </Step>
+  <Step title="Navigate to API Keys">
+    Go to Settings → API Keys (or directly to platform.openai.com/api-keys)
+  </Step>
+  <Step title="Create New Secret Key">
+    Click "Create new secret key"
+    
+    Give it a name like "Smelt Production"
+  </Step>
+  <Step title="Copy the Key">
+    **Important:** Copy immediately! The key is only shown once.
+    
+    It starts with `sk-...`
+  </Step>
+</Steps>
+
+<Warning>
+  OpenAI only shows your API key once. If you lose it, you'll need to create a new one.
+</Warning>
+
+## Adding Your Key to Smelt
+
+<Steps>
+  <Step title="Go to Settings">
+    Click Settings in the Smelt sidebar
+  </Step>
+  <Step title="Click API Keys">
+    Navigate to the API Keys section
+  </Step>
+  <Step title="Click Add API Key">
+    Click the "Add API Key" button
+  </Step>
+  <Step title="Paste Your Key">
+    Paste your OpenAI API key (starts with `sk-...`)
+  </Step>
+  <Step title="Add a Label (Optional)">
+    Give it a label like "Production" or "Main"
+  </Step>
+  <Step title="Save">
+    Click Save to store your key securely
+  </Step>
+</Steps>
+
+## Verifying Your Key
+
+After adding:
+
+1. Smelt will validate the key format
+2. You can click "Test" to verify it works
+3. If valid, the key is ready to use
+
+### Test Results
+
+| Result | Meaning |
+|--------|---------|
+| ✅ Valid | Key works and has credits |
+| ❌ Invalid | Key format wrong or revoked |
+| ⚠️ No credits | Key valid but no OpenAI credits |
+
+## Managing Multiple Keys
+
+You can add multiple API keys:
+
+- Different keys for different purposes
+- Backup keys
+- Keys with different spending limits
+
+Only one key is active at a time. Select which key to use in Settings.
+
+## OpenAI Credits
+
+BYOK means you pay OpenAI directly for API usage.
+
+### Adding Credits
+
+1. Go to [platform.openai.com/account/billing](https://platform.openai.com/account/billing)
+2. Add a payment method
+3. Add credits or set up auto-recharge
+
+### Monitoring Usage
+
+Check your OpenAI usage at:
+- platform.openai.com/usage
+
+<Tip>
+  Set up usage alerts in OpenAI to avoid running out of credits mid-job.
+</Tip>
+
+## API Key Best Practices
+
+<AccordionGroup>
+  <Accordion title="Use a dedicated key for Smelt">
+    Create a separate API key just for Smelt. Easier to track usage and revoke if needed.
+  </Accordion>
+  <Accordion title="Set spending limits">
+    In OpenAI, set monthly spending limits to prevent unexpected costs.
+  </Accordion>
+  <Accordion title="Monitor regularly">
+    Check your OpenAI dashboard periodically to track spend.
+  </Accordion>
+  <Accordion title="Rotate keys periodically">
+    For security, consider rotating keys every few months.
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+### "Invalid API key"
+
+- Check for typos or extra spaces
+- Ensure you copied the full key
+- Try generating a new key
+
+### "Insufficient credits"
+
+- Add credits in your OpenAI account
+- Set up auto-recharge
+
+### "Rate limit exceeded"
+
+- Wait a minute and retry
+- Check your OpenAI tier limits
+- Consider upgrading your OpenAI plan
+
+<Note>
+  Smelt handles rate limiting with automatic retries, but severe rate limits may still cause issues.
+</Note>

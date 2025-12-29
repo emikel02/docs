@@ -1,0 +1,135 @@
+---
+title: Editing Results
+description: Inline editing, bulk actions, and re-running results
+---
+
+# Editing Results
+
+Edit individual outputs, perform bulk actions, or re-run problematic rows.
+
+## Inline Editing
+
+### How to Edit a Result
+
+<Steps>
+  <Step title="Click on a Result Row">
+    Opens the detail panel
+  </Step>
+  <Step title="Click Edit">
+    Enter edit mode for the output text
+  </Step>
+  <Step title="Make Your Changes">
+    Edit the generated copy as needed
+  </Step>
+  <Step title="Save">
+    Your changes are saved immediately
+  </Step>
+</Steps>
+
+### What Happens When You Edit
+
+- **Quality flags re-checked** — New flags may appear or disappear
+- **Original preserved** — You can see what the AI generated
+- **Marked as edited** — Results show they were manually modified
+
+<Tip>
+  Editing is great for small fixes. For systematic issues, consider revising the template and re-running.
+</Tip>
+
+## Bulk Actions
+
+Select multiple results to perform bulk actions.
+
+### Selecting Results
+
+- **Click checkbox** — Select individual rows
+- **Select all on page** — Checkbox in header
+- **Shift+click** — Select a range
+
+### Available Bulk Actions
+
+| Action | Description |
+|--------|-------------|
+| **Approve** | Mark selected as approved (ready to use) |
+| **Reject** | Mark selected as rejected (won't export) |
+| **Delete** | Remove selected results permanently |
+| **Re-run** | Re-generate selected rows |
+
+<Warning>
+  Bulk delete cannot be undone. Results are permanently removed.
+</Warning>
+
+### Bulk Approve/Reject Workflow
+
+1. Filter to show only flagged results
+2. Review each one quickly
+3. Select rows that are acceptable despite flags
+4. Click **Approve**
+5. Select rows that need to be excluded
+6. Click **Reject**
+
+## Re-running Results
+
+Re-run rows that failed or produced poor quality outputs.
+
+### Re-run Selected
+
+<Steps>
+  <Step title="Select Rows">
+    Check the boxes for rows you want to re-run
+  </Step>
+  <Step title="Click Re-run Selected">
+    Selected rows are queued for re-processing
+  </Step>
+  <Step title="Wait for Processing">
+    New outputs replace the old ones
+  </Step>
+  <Step title="Review New Results">
+    Check if the new outputs are better
+  </Step>
+</Steps>
+
+### Re-run All Failed
+
+From the job details page:
+1. Click **Re-run Failed**
+2. Only rows with status "failed" are re-processed
+3. Successful rows are not affected
+
+### Re-run Flagged
+
+Re-run only rows with quality flags:
+1. Filter to "Has Flags"
+2. Select all on page
+3. Click **Re-run Selected**
+
+<Warning>
+  Re-runs count toward your monthly usage! Each re-run consumes 1 row per template.
+</Warning>
+
+## When to Edit vs Re-run
+
+| Situation | Recommendation |
+|-----------|----------------|
+| Minor fix needed | Edit inline |
+| One word wrong | Edit inline |
+| Output completely off | Re-run |
+| Same issue on many rows | Revise template, re-run all |
+| AI ignored instructions | Revise template, re-run all |
+
+## Editing Tips
+
+<AccordionGroup>
+  <Accordion title="Keep the personalization">
+    Don't remove the personalized elements—that's the whole point! Edit for quality while keeping specificity.
+  </Accordion>
+  <Accordion title="Match the tone">
+    Keep your edits consistent with the overall tone of your campaign.
+  </Accordion>
+  <Accordion title="Check length">
+    Make sure your edit still fits any length constraints for your email tool.
+  </Accordion>
+  <Accordion title="Consider the template">
+    If you're making the same edit repeatedly, update the template instead.
+  </Accordion>
+</AccordionGroup>

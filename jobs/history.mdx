@@ -1,0 +1,111 @@
+---
+title: Job History
+description: Viewing past jobs and their results
+---
+
+# Job History
+
+Access all your past jobs, their status, and results.
+
+## Viewing Past Jobs
+
+Click **Jobs** in the sidebar to see your job history.
+
+### Job List Shows
+
+| Column | Description |
+|--------|-------------|
+| **Job Name** | Auto-generated or custom name |
+| **File** | Source CSV file |
+| **Status** | pending, running, completed, failed, cancelled |
+| **Progress** | Rows processed / total |
+| **Created** | When job was created |
+| **Templates** | Number of templates used |
+
+### Filtering Jobs
+
+Filter the job list by status:
+- **All** — Every job
+- **Running** — Currently processing
+- **Completed** — Successfully finished
+- **Failed** — Encountered errors
+- **Cancelled** — Manually stopped
+
+## Job Details Page
+
+Click any job to see full details:
+
+<CardGroup cols={2}>
+  <Card title="Status & Progress" icon="chart-line">
+    Current status, rows processed, success/failure counts
+  </Card>
+  <Card title="Configuration" icon="gear">
+    File used, templates selected, row range
+  </Card>
+  <Card title="Timing" icon="clock">
+    Started, completed, duration
+  </Card>
+  <Card title="Cost & Tokens" icon="coins">
+    Total tokens used, estimated cost
+  </Card>
+</CardGroup>
+
+### Quality Summary
+
+The job details page shows aggregate quality stats:
+- Total results
+- Flagged results count
+- Breakdown by flag type
+
+## Actions on Past Jobs
+
+### View Results
+Click **View Results** to see all generated outputs with:
+- Original data
+- Generated copy
+- Confidence scores
+- Quality flags
+
+### Re-run Failed Rows
+If some rows failed:
+1. Open job details
+2. Click **Re-run Failed**
+3. Only failed rows are re-processed
+4. Successful rows are not re-run
+
+<Note>
+  Re-runs count toward your monthly usage.
+</Note>
+
+### Export Results
+Click **Export** to download a CSV with:
+- Original data columns
+- New AI-generated columns
+- Confidence scores (optional)
+- Quality flags (optional)
+
+### Delete Job
+Delete a job to remove it from your history. This also deletes all associated results.
+
+<Warning>
+  Deleting a job cannot be undone. All results are permanently removed.
+</Warning>
+
+## Finding Specific Jobs
+
+### By Status
+Use the status filter tabs to find jobs in a specific state.
+
+### By Date
+Jobs are sorted by creation date (newest first). Scroll to find older jobs.
+
+### By File
+Look at the file name column to find jobs for a specific data file.
+
+## Job Retention
+
+Jobs and their results are retained indefinitely while your account is active. There's no automatic deletion.
+
+<Tip>
+  Delete old jobs you no longer need to keep your workspace clean.
+</Tip>

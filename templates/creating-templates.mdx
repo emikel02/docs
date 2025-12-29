@@ -1,0 +1,145 @@
+---
+title: Creating Templates
+description: How to create custom templates for your use case
+---
+
+# Creating Custom Templates
+
+Create templates tailored to your specific offer, audience, and voice.
+
+## Step-by-Step Template Creation
+
+<Steps>
+  <Step title="Navigate to Templates">
+    Click **Templates** in the sidebar
+  </Step>
+  <Step title="Click Create Template">
+    Click the **Create Template** button
+  </Step>
+  <Step title="Fill in Basic Details">
+    - **Name:** Descriptive identifier (e.g., "SaaS Pain Point Hook")
+    - **Category:** Select or type custom
+    - **Output Column Name:** What the result column will be called
+  </Step>
+  <Step title="Write Your Prompt">
+    Enter your AI instructions with `{{variables}}`
+    
+    ```text
+    Write a personalized opening line for {{First Name}}, 
+    who is {{Job Title}} at {{Company}} in {{City}}.
+    
+    Focus on challenges in the {{Industry}} industry.
+    Keep it under 150 characters. Don't use "I hope this finds you well."
+    ```
+  </Step>
+  <Step title="Configure Constraints">
+    - **Character limit:** Max characters (optional)
+    - **Word limit:** Max words (optional)
+    - **Forbidden words:** Words to never include (optional)
+  </Step>
+  <Step title="Set AI Parameters">
+    - **Model:** gpt-4o-mini (default, recommended)
+    - **Temperature:** 0.7 (default, 0 = focused, 1 = creative)
+    - **Max Tokens:** 150 (default output length)
+  </Step>
+  <Step title="Save Template">
+    Click **Create Template** to save
+  </Step>
+</Steps>
+
+## Writing Effective Prompts
+
+<AccordionGroup>
+  <Accordion title="Be specific about output format">
+    ❌ "Write something about their company"
+    
+    ✅ "Write a 1-sentence opening hook mentioning their company's recent growth"
+  </Accordion>
+  <Accordion title="Include what NOT to include">
+    ```text
+    Don't use:
+    - "I hope this finds you well"
+    - Questions in the opening
+    - The word "excited"
+    ```
+  </Accordion>
+  <Accordion title="Specify length clearly">
+    ```text
+    Keep it under 150 characters.
+    Maximum 2 sentences.
+    One short paragraph only.
+    ```
+  </Accordion>
+  <Accordion title="Give examples if helpful">
+    ```text
+    Example output style:
+    "Scaling a SaaS sales team in Austin's competitive market is no small feat—"
+    ```
+  </Accordion>
+  <Accordion title="Reference your actual offer">
+    ```text
+    We offer fast business funding with 24-hour approval.
+    Tie the hook to how quick capital could help their situation.
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Output Column Name
+
+The **Output Column Name** determines:
+- What the new CSV column will be called
+- How you reference it in template chaining
+- What variable name appears in your sending tool
+
+<Tip>
+  Use clear, descriptive names like `Hook`, `Pain_Point`, `CTA` rather than generic names like `Output1`.
+</Tip>
+
+## Character and Word Limits
+
+Set constraints to control output length:
+
+| Setting | Effect |
+|---------|--------|
+| **Character Limit** | AI tries to stay under X characters |
+| **Word Limit** | AI tries to stay under X words |
+| **Both** | AI respects whichever is more restrictive |
+
+<Note>
+  Limits are guidelines for the AI, not hard cutoffs. Outputs may occasionally exceed limits slightly. The quality flag system will catch these.
+</Note>
+
+## Forbidden Words
+
+Add words that should never appear in outputs:
+
+- Enter as comma-separated list or tags
+- Common uses: competitor names, banned phrases, overused words
+- Outputs containing forbidden words get flagged
+
+**Example forbidden words:**
+```text
+loan, synergy, circle back, touch base, I hope this finds you well
+```
+
+## AI Model Settings
+
+| Setting | Default | Recommendation |
+|---------|---------|----------------|
+| **Model** | gpt-4o-mini | Keep default for best cost/quality |
+| **Temperature** | 0.7 | Lower (0.3) for consistent, higher (0.9) for creative |
+| **Max Tokens** | 150 | Increase for longer outputs |
+
+## Testing Before Use
+
+After creating a template, **test it** before running a full job:
+
+1. Open the template
+2. Select a file to test with
+3. Click **Test**
+4. Review outputs and quality flags
+5. Iterate on the prompt if needed
+
+<Warning>
+  Template tests count toward your monthly usage!
+</Warning>

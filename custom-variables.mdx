@@ -1,0 +1,137 @@
+---
+title: Custom Variables
+description: Create reusable values for your templates
+---
+
+# Custom Variables
+
+Custom variables are reusable values that you define once and use across multiple templates.
+
+## What Are Custom Variables?
+
+Values you define in Settings that stay constant across all rows:
+
+| Example Variable | Example Value |
+|------------------|---------------|
+| `CompanyName` | "Acme Funding" |
+| `ProductName` | "QuickCash Pro" |
+| `CurrentOffer` | "24-hour approval with rates from 5%" |
+| `SenderName` | "Sarah Johnson" |
+| `CalendlyLink` | "https://calendly.com/sarah-acme" |
+
+## Custom Variables vs Column Variables
+
+| Type | Syntax | Source | Value |
+|------|--------|--------|-------|
+| **Column Variable** | `{{Company}}` | Your CSV | Different per row |
+| **Custom Variable** | `{{$CompanyName}}` | Settings | Same for all rows |
+
+<Note>
+  Custom variables use a `$` prefix: `{{$VariableName}}`
+</Note>
+
+## Managing Custom Variables
+
+### Accessing Custom Variables
+
+1. Click **Settings** in the sidebar
+2. Click **Custom Variables**
+
+### Adding a Variable
+
+<Steps>
+  <Step title="Click Add Variable">
+    Click the "Add Variable" button
+  </Step>
+  <Step title="Enter Variable Name">
+    Enter the name (without the $ symbol)
+    
+    Example: `CompanyName` not `$CompanyName`
+  </Step>
+  <Step title="Enter Variable Value">
+    Enter the value you want to use
+  </Step>
+  <Step title="Save">
+    Click Save to create the variable
+  </Step>
+</Steps>
+
+### Editing a Variable
+
+1. Find the variable in your list
+2. Click Edit
+3. Update the value
+4. Save
+
+### Deleting a Variable
+
+1. Find the variable in your list
+2. Click Delete
+3. Confirm deletion
+
+<Warning>
+  Deleting a variable will cause templates using it to have empty values for that variable!
+</Warning>
+
+## Using Custom Variables in Templates
+
+Reference with the `$` prefix:
+
+```text
+Hi {{First Name}},
+
+I'm reaching out from {{$CompanyName}}. We help {{Industry}} 
+companies like {{Company}} with {{$CurrentOffer}}.
+
+Would you be open to a quick chat?
+
+{{$SenderName}}
+```
+
+**Result for each row:**
+- `{{First Name}}`, `{{Company}}`, `{{Industry}}` → Different per lead
+- `{{$CompanyName}}`, `{{$CurrentOffer}}`, `{{$SenderName}}` → Same for all
+
+## Best Use Cases
+
+<CardGroup cols={2}>
+  <Card title="Company Info" icon="building">
+    Your company name, tagline, website
+  </Card>
+  <Card title="Product Info" icon="box">
+    Product name, key features, pricing
+  </Card>
+  <Card title="Current Campaigns" icon="bullhorn">
+    Offers, promotions, seasonal messaging
+  </Card>
+  <Card title="Sender Info" icon="user">
+    Name, title, calendar link, phone
+  </Card>
+</CardGroup>
+
+## Benefits of Custom Variables
+
+<AccordionGroup>
+  <Accordion title="Update once, apply everywhere">
+    Change your offer in Settings and all templates using `{{$CurrentOffer}}` update automatically.
+  </Accordion>
+  <Accordion title="Consistency across templates">
+    Ensure your company name is spelled the same way in every template.
+  </Accordion>
+  <Accordion title="Easy A/B testing">
+    Swap out variables to test different offers or messaging.
+  </Accordion>
+  <Accordion title="Cleaner templates">
+    Keep your prompts focused on personalization, not hardcoded values.
+  </Accordion>
+</AccordionGroup>
+
+## Tips
+
+<Tip>
+  Create custom variables for anything you might want to change across multiple templates at once.
+</Tip>
+
+<Tip>
+  Use clear naming: `CurrentOffer` is better than `Offer1` or `var3`.
+</Tip>

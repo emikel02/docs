@@ -1,0 +1,166 @@
+---
+title: Billing Modes
+description: Understanding Free, BYOK, and Managed billing options
+---
+
+# Billing Modes
+
+Smelt offers three ways to handle AI costs, giving you flexibility based on your needs.
+
+## The Three Modes
+
+<CardGroup cols={3}>
+  <Card title="Free Tier" icon="gift">
+    250 rows/month included
+    
+    No setup needed
+  </Card>
+  <Card title="BYOK" icon="key">
+    Bring Your Own Key
+    
+    10-50x cheaper at scale
+  </Card>
+  <Card title="Managed" icon="hands">
+    We handle everything
+    
+    Simplest billing
+  </Card>
+</CardGroup>
+
+---
+
+## Free Tier
+
+**Best for:** Trying Smelt, small tests, evaluating the product
+
+| Aspect | Details |
+|--------|---------|
+| **Monthly limit** | 250 rows |
+| **Cost** | $0 |
+| **API key needed** | No — uses Smelt's platform key |
+| **Setup** | None — works immediately |
+
+### How It Works
+
+1. Sign up for free
+2. Upload a CSV
+3. Run jobs immediately
+4. Smelt's platform API key handles all AI calls
+
+<Info>
+  Free tier is fully functional. Same features as paid plans, just limited to 250 rows/month.
+</Info>
+
+---
+
+## BYOK (Bring Your Own Key)
+
+**Best for:** High volume users, cost-conscious teams, maximum savings
+
+| Aspect | Details |
+|--------|---------|
+| **Monthly cost** | $29 / $79 / $199 (by tier) |
+| **API key needed** | Yes — your OpenAI key |
+| **AI costs** | You pay OpenAI directly (~$0.001-0.002/row) |
+| **Total cost** | Subscription + raw API costs |
+
+### How It Works
+
+1. Subscribe to a paid plan (Starter/Growth/Scale)
+2. Choose BYOK billing mode
+3. Add your OpenAI API key in Settings
+4. Jobs use your key — you pay OpenAI directly
+
+### Cost Comparison
+
+| Rows | Per-Credit Tools | BYOK (API only) | Savings |
+|------|------------------|-----------------|---------|
+| 10,000 | $200-1,000 | $10-20 | 10-50x |
+| 50,000 | $1,000-5,000 | $50-100 | 10-50x |
+| 100,000 | $2,000-10,000 | $100-200 | 10-50x |
+
+<Tip>
+  BYOK is dramatically cheaper at scale. If you process 25K+ rows/month, BYOK saves serious money.
+</Tip>
+
+### BYOK Requirements
+
+- OpenAI account with API access
+- API key with available credits
+- Added to Smelt in Settings > API Keys
+
+---
+
+## Managed Mode
+
+**Best for:** Teams wanting simplicity, those who prefer one invoice
+
+| Aspect | Details |
+|--------|---------|
+| **Monthly cost** | $49 / $129 / $299 (by tier) |
+| **API key needed** | No — uses Smelt's platform key |
+| **AI costs** | Included in subscription |
+| **Total cost** | Just the subscription |
+
+### How It Works
+
+1. Subscribe to a paid plan (Starter/Growth/Scale)
+2. Choose Managed billing mode
+3. No API key setup needed
+4. Smelt handles all AI costs
+
+### Why Choose Managed
+
+- ✅ One invoice, one vendor
+- ✅ No API key management
+- ✅ No monitoring OpenAI credits
+- ✅ Simpler for teams
+
+---
+
+## Comparison Table
+
+| Factor | Free | BYOK | Managed |
+|--------|------|------|---------|
+| **Rows/month** | 250 | 5K-100K | 5K-100K |
+| **Subscription** | $0 | $29-199 | $49-299 |
+| **API costs** | Included | You pay OpenAI | Included |
+| **API key needed** | No | Yes | No |
+| **Best for** | Testing | High volume | Simplicity |
+
+---
+
+## Switching Modes
+
+You can change billing modes:
+
+1. Go to Settings > Billing
+2. Click Manage Subscription
+3. Select different plan/mode
+4. If switching to BYOK, add API key in Settings
+
+<Note>
+  Switching modes takes effect on your next billing cycle.
+</Note>
+
+---
+
+## Which Should You Choose?
+
+<AccordionGroup>
+  <Accordion title="Just starting out?">
+    Start with **Free tier**. You get 250 rows to test everything.
+  </Accordion>
+  <Accordion title="Less than 5,000 rows/month?">
+    **Managed** is simpler. The cost difference vs BYOK is small at this volume.
+  </Accordion>
+  <Accordion title="5,000-25,000 rows/month?">
+    **BYOK** starts saving meaningful money. Worth the API key setup.
+  </Accordion>
+  <Accordion title="More than 25,000 rows/month?">
+    **BYOK** is significantly cheaper. Could save hundreds or thousands monthly.
+  </Accordion>
+  <Accordion title="Team prefers one invoice?">
+    **Managed** keeps billing simple, even if slightly more expensive.
+  </Accordion>
+</AccordionGroup>

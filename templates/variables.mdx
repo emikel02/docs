@@ -1,0 +1,186 @@
+---
+title: Template Variables
+description: Using column variables and custom variables in templates
+---
+
+# Template Variables
+
+Variables are placeholders in your prompt that get replaced with actual data for each row.
+
+## Two Types of Variables
+
+<CardGroup cols={2}>
+  <Card title="Column Variables" icon="table">
+    `{{ColumnName}}`
+    
+    Pulls data from your CSV columns. Different value for each row.
+  </Card>
+  <Card title="Custom Variables" icon="code">
+    `{{$VariableName}}`
+    
+    Pulls from your saved custom variables. Same value for all rows.
+  </Card>
+</CardGroup>
+
+---
+
+## Column Variables
+
+### Syntax
+```text
+{{Column Name}}
+```
+
+### How They Work
+
+Column variables reference your CSV data directly:
+
+| Your CSV Column | Variable to Use |
+|-----------------|-----------------|
+| `First Name` | `{{First Name}}` |
+| `Company` | `{{Company}}` |
+| `Job Title` | `{{Job Title}}` |
+| `City` | `{{City}}` |
+| `Industry` | `{{Industry}}` |
+
+### Example
+
+**Your prompt:**
+```text
+Write a hook for {{First Name}} at {{Company}} in {{City}}.
+```
+
+**Row 1 data:** Sarah, Acme Corp, Austin
+
+**Becomes:**
+```text
+Write a hook for Sarah at Acme Corp in Austin.
+```
+
+**Row 2 data:** Mike, BuildCo, Denver
+
+**Becomes:**
+```text
+Write a hook for Mike at BuildCo in Denver.
+```
+
+### Case Sensitivity
+
+Variable matching is **case-insensitive**:
+- `{{company}}` matches column "Company"
+- `{{COMPANY}}` matches column "Company"
+- `{{Company}}` matches column "company"
+
+<Tip>
+  Use the exact column name from your CSV for clarity, but know that case doesn't matter.
+</Tip>
+
+---
+
+## Custom Variables
+
+### Syntax
+```text
+{{$VariableName}}
+```
+
+Note the `$` prefix — this distinguishes custom variables from column variables.
+
+### How They Work
+
+Custom variables are values you define once in Settings:
+
+| Variable Name | Value | Use In Template |
+|---------------|-------|-----------------|
+| `CompanyName` | "Acme Funding" | `{{$CompanyName}}` |
+| `ProductName` | "QuickCash Pro" | `{{$ProductName}}` |
+| `CurrentOffer` | "24-hour approval" | `{{$CurrentOffer}}` |
+
+### Example
+
+**Your custom variable:** `$CompanyName` = "Acme Funding"
+
+**Your prompt:**
+```text
+We're {{$CompanyName}} and we help companies like {{Company}} 
+access fast capital.
+```
+
+**Becomes (for every row):**
+```text
+We're Acme Funding and we help companies like [their company] 
+access fast capital.
+```
+
+### When to Use Custom Variables
+
+- Your company name
+- Your product name
+- Current offers or promotions
+- Sender name
+- Contact information
+- Anything consistent across all leads
+
+<Note>
+  Custom variables let you update one value in Settings and have it apply to all templates that use it.
+</Note>
+
+---
+
+## What Happens If a Variable Isn't Found
+
+### Missing Column Variable
+
+If `{{Company}}` is used but no "Company" column exists:
+- Variable is replaced with empty string
+- Prompt cleanup removes orphan prepositions ("at " becomes "")
+- Output may be less personalized
+
+### Missing Custom Variable
+
+If `{{$ProductName}}` is used but not defined in Settings:
+- Variable is replaced with empty string
+- May cause awkward phrasing
+
+<Warning>
+  Test your templates to catch missing variable issues before running full jobs!
+</Warning>
+
+---
+
+## Variable Best Practices
+
+<AccordionGroup>
+  <Accordion title="Use descriptive column names">
+    `{{Recent_Funding_Round}}` is clearer than `{{col7}}`
+  </Accordion>
+  <Accordion title="Check your CSV columns first">
+    View your file's column list before writing templates
+  </Accordion>
+  <Accordion title="Use custom variables for repeated values">
+    Don't hardcode your company name — use `{{$CompanyName}}`
+  </Accordion>
+  <Accordion title="Test with sample data">
+    Run a test to see how variables resolve with real data
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Combining Variable Types
+
+You can use both types in the same template:
+
+```text
+Hi {{First Name}},
+
+I'm reaching out from {{$CompanyName}} because {{Company}} 
+in the {{Industry}} space could benefit from {{$CurrentOffer}}.
+
+Best,
+{{$SenderName}}
+```
+
+This combines:
+- CSV data: `{{First Name}}`, `{{Company}}`, `{{Industry}}`
+- Custom variables: `{{$CompanyName}}`, `{{$CurrentOffer}}`, `{{$SenderName}}`

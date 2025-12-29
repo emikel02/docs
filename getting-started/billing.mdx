@@ -1,0 +1,140 @@
+---
+title: Billing & Subscription
+description: Plans, pricing, and usage limits
+---
+
+# Billing & Subscription
+
+## Available Plans
+
+| Plan | Rows/Month | BYOK Price | Managed Price |
+|------|------------|------------|---------------|
+| **Free** | 250 | $0 | $0 |
+| **Starter** | 5,000 | $29/mo | $49/mo |
+| **Growth** | 25,000 | $79/mo | $129/mo |
+| **Scale** | 100,000 | $199/mo | $299/mo |
+
+## BYOK vs Managed Pricing
+
+<Tabs>
+  <Tab title="BYOK Mode">
+    **Bring Your Own Key**
+    
+    - You provide your own OpenAI API key
+    - Pay OpenAI directly for AI costs (~$0.001-0.002 per row)
+    - Lower monthly subscription fee
+    - Best for high volume users
+    
+    **Monthly cost:** $29 / $79 / $199
+  </Tab>
+  <Tab title="Managed Mode">
+    **Smelt Handles Everything**
+    
+    - Smelt handles all AI costs
+    - No API key needed
+    - Simpler billing — one invoice
+    - Best for simplicity
+    
+    **Monthly cost:** $49 / $129 / $299
+  </Tab>
+  <Tab title="Free Tier">
+    **Try Before You Buy**
+    
+    - 250 rows/month included
+    - Uses Smelt's platform API key automatically
+    - No setup required
+    - No credit card needed
+    
+    **Monthly cost:** $0
+  </Tab>
+</Tabs>
+
+<Tip>
+  **Which should you choose?**
+  - Low volume (&lt;5K/month): Managed is simpler
+  - High volume (&gt;25K/month): BYOK saves significant money
+  - Testing: Start with Free tier
+</Tip>
+
+## Viewing Current Usage
+
+<Steps>
+  <Step title="Go to Settings">
+    Click Settings in the sidebar
+  </Step>
+  <Step title="Click Billing">
+    Navigate to the Billing section
+  </Step>
+  <Step title="View Your Usage">
+    See your current plan, rows used, and rows remaining
+  </Step>
+</Steps>
+
+The usage meter shows:
+- **Rows used** this billing period
+- **Rows remaining** in your allowance
+- **Percentage consumed** of your monthly limit
+
+## Upgrading or Downgrading
+
+<Steps>
+  <Step title="Navigate to Settings > Billing">
+    Go to the Billing section
+  </Step>
+  <Step title="Click Manage Subscription">
+    Opens the Stripe customer portal
+  </Step>
+  <Step title="Select Your Desired Plan">
+    Choose a new plan tier
+  </Step>
+  <Step title="Complete Checkout">
+    Confirm via Stripe
+  </Step>
+</Steps>
+
+## What Happens at Your Limit
+
+When you reach your monthly row limit:
+
+- ❌ **Jobs are blocked** from starting
+- ⚠️ **Clear error message** displays with usage details
+- 💡 **Upgrade prompt** appears
+- ⏸️ **Running jobs** pause if mid-processing
+
+<Note>
+  You won't be charged overage fees. Jobs simply won't run until you upgrade or your usage resets.
+</Note>
+
+## Billing Cycle and Reset
+
+- **Usage resets** at the start of each billing cycle
+- **No rollover** of unused rows
+- **Monthly billing** cycle
+
+<Warning>
+  Unused rows do NOT roll over to the next month. Use them or lose them!
+</Warning>
+
+## How Rows Are Counted
+
+Each template × each row = 1 usage
+
+**Examples:**
+| Rows | Templates | Usage |
+|------|-----------|-------|
+| 100 | 1 | 100 |
+| 100 | 3 | 300 |
+| 1,000 | 5 | 5,000 |
+
+<Warning>
+  Template tests also count toward usage! Each test consumes 1 row of your monthly allowance.
+</Warning>
+
+## Payment Methods
+
+Smelt uses Stripe for secure payment processing:
+
+- Credit/debit cards
+- Some regions support additional methods
+
+All payments are processed securely through Stripe. Smelt never sees your full card details.

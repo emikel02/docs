@@ -1,0 +1,126 @@
+---
+title: Job Execution
+description: Running jobs, monitoring progress, and controlling execution
+---
+
+# Job Execution
+
+Once you start a job, Smelt processes your rows in parallel for speed.
+
+## Job Statuses
+
+| Status | Description |
+|--------|-------------|
+| **pending** | Queued, not yet started |
+| **running** | Currently processing rows |
+| **paused** | Temporarily stopped by user |
+| **completed** | All rows processed successfully |
+| **failed** | Error occurred, job stopped |
+| **cancelled** | Manually cancelled by user |
+
+## What Happens When a Job Starts
+
+1. Status changes to **running**
+2. Rows are processed in parallel (5 at a time)
+3. Progress updates in real-time
+4. Results are saved as they complete
+5. Status changes to **completed** when done
+
+## Progress Tracking
+
+While a job runs, you'll see:
+
+| Metric | Description |
+|--------|-------------|
+| **Rows processed** | X / total rows completed |
+| **Success count** | Rows that generated successfully |
+| **Failed count** | Rows that encountered errors |
+| **Progress %** | Percentage complete |
+| **ETA** | Estimated time remaining |
+
+<Note>
+  ETA is dynamically calculated based on current processing speed.
+</Note>
+
+## Controlling Jobs
+
+### Pause
+
+Click **Pause** to temporarily stop processing:
+- Current batch completes before pausing
+- No new rows start
+- Results so far are saved
+- Job can be resumed later
+
+**Use cases:**
+- Need to check partial results
+- API issues you want to investigate
+- Taking a break
+
+### Resume
+
+Click **Resume** to continue a paused job:
+- Picks up where it left off
+- Previously completed rows are not re-processed
+- Continues until all rows done
+
+### Cancel
+
+Click **Cancel** to stop a job permanently:
+- Stops all processing
+- Completed results are kept
+- Cannot be undone
+- Remaining rows are not processed
+
+<Warning>
+  Cancelled jobs cannot be resumed. Completed results are preserved, but you'd need to create a new job to process remaining rows.
+</Warning>
+
+## Parallel Processing
+
+Smelt processes multiple rows simultaneously for speed:
+
+- **Concurrency:** 5 parallel API calls
+- **Rate limiting:** Built-in delays to prevent API throttling
+- **Retry logic:** 3 attempts per row with exponential backoff
+
+This means:
+- Jobs complete faster than sequential processing
+- Large jobs (10K+ rows) are still manageable
+- Temporary API errors are handled automatically
+
+## What Happens If a Job Fails
+
+If an error stops the job:
+
+1. **Completed rows are saved** — You don't lose progress
+2. **Error details available** — Check the job details page
+3. **Re-run option** — You can re-run failed rows only
+
+### Common Failure Causes
+
+| Cause | Solution |
+|-------|----------|
+| API key invalid | Check Settings > API Keys |
+| Rate limit hit | Wait and resume, or job auto-retries |
+| Usage limit exceeded | Upgrade plan |
+| Network error | Check connection, retry |
+
+## Crash Recovery
+
+If something goes wrong mid-job:
+
+- Results are saved after each row (crash-safe)
+- You can see partial results
+- Resume or re-run failed rows
+
+<Tip>
+  Smelt is designed for large jobs. Processing 10,000+ rows is routine and results are protected throughout.
+</Tip>
+
+## Viewing Active Jobs
+
+Go to **Jobs** in the sidebar to see:
+- Currently running jobs with live progress
+- Recent completed jobs
+- Failed jobs that need attention

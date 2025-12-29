@@ -1,0 +1,140 @@
+---
+title: Usage & Limits
+description: How usage is counted and what happens at limits
+---
+
+# Usage & Limits
+
+Understanding how Smelt counts usage and what happens when you reach your limit.
+
+## How Rows Are Counted
+
+**Each template × each row = 1 usage**
+
+| Scenario | Rows | Templates | Usage |
+|----------|------|-----------|-------|
+| Simple job | 100 | 1 | 100 |
+| Multi-template | 100 | 3 | 300 |
+| Large batch | 1,000 | 2 | 2,000 |
+| Big campaign | 10,000 | 3 | 30,000 |
+
+### Example Calculation
+
+You have a Growth plan (25,000 rows/month):
+
+- Job 1: 5,000 rows × 2 templates = 10,000 usage
+- Job 2: 3,000 rows × 3 templates = 9,000 usage
+- Job 3: 2,000 rows × 1 template = 2,000 usage
+- **Total:** 21,000 / 25,000 used
+- **Remaining:** 4,000 rows
+
+## What Counts Toward Usage
+
+<CardGroup cols={2}>
+  <Card title="✅ Counts" icon="check">
+    - Job processing
+    - Template tests
+    - Re-runs of failed rows
+    - Each template in multi-template jobs
+  </Card>
+  <Card title="❌ Doesn't Count" icon="xmark">
+    - File uploads
+    - Template creation
+    - Viewing results
+    - Exporting CSVs
+  </Card>
+</CardGroup>
+
+<Warning>
+  **Template tests count!** Each test consumes 1 row of your monthly allowance.
+</Warning>
+
+## Monthly Limits by Plan
+
+| Plan | Rows/Month |
+|------|------------|
+| Free | 250 |
+| Starter | 5,000 |
+| Growth | 25,000 |
+| Scale | 100,000 |
+
+## What Happens at Your Limit
+
+When you reach your monthly row limit:
+
+1. **Jobs are blocked** — Cannot start new jobs
+2. **Clear error message** — Shows usage details
+3. **Upgrade prompt** — Link to upgrade plan
+4. **Running jobs pause** — If mid-processing
+
+### The Error Message Shows
+
+- Current usage (e.g., 25,000/25,000)
+- Rows requested
+- Why it's blocked
+- How to resolve (upgrade or wait)
+
+<Note>
+  You won't be charged overage fees. Jobs simply won't run until you upgrade or your usage resets.
+</Note>
+
+## Checking Your Usage
+
+### In the Dashboard
+The dashboard shows:
+- Rows used this month
+- Rows remaining
+- Usage percentage
+
+### In Settings
+Go to **Settings > Billing** for detailed usage:
+- Current plan
+- Billing cycle dates
+- Exact usage numbers
+
+## Usage Reset
+
+- **Resets** at the start of each billing cycle
+- **No rollover** of unused rows
+- **Monthly billing** cycle from signup date
+
+<Warning>
+  Unused rows do NOT roll over. Use them before your cycle resets!
+</Warning>
+
+## Planning Your Usage
+
+### Before Starting a Job
+
+The job creation wizard shows:
+- How many rows you're about to use
+- Your current remaining balance
+- Whether the job will fit
+
+### Usage Strategy
+
+<AccordionGroup>
+  <Accordion title="Test small first">
+    Run 10-20 rows to verify templates before committing thousands.
+  </Accordion>
+  <Accordion title="Count templates">
+    Remember: 3 templates = 3x the usage. Only use templates you need.
+  </Accordion>
+  <Accordion title="Monitor throughout the month">
+    Check the dashboard regularly to avoid surprises.
+  </Accordion>
+  <Accordion title="Upgrade proactively">
+    If you're regularly hitting limits, upgrade before it blocks work.
+  </Accordion>
+</AccordionGroup>
+
+## Need More Rows?
+
+<CardGroup cols={2}>
+  <Card title="Upgrade Plan" icon="arrow-up" href="/getting-started/billing">
+    Move to a higher tier for more monthly rows
+  </Card>
+  <Card title="Contact Sales" icon="envelope" href="mailto:sales@getsmelt.io">
+    Need custom limits? Let's talk.
+  </Card>
+</CardGroup>

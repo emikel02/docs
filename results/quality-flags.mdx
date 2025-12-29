@@ -1,0 +1,267 @@
+---
+title: Quality Flags
+description: Understanding the 11 quality flags and auto-fix feature
+---
+
+# Quality Flags
+
+Quality flags are automated warnings about potential issues in generated output. Smelt checks every output and flags problems for your review.
+
+## The 11 Quality Flags
+
+### Length Flags
+
+| Flag | Description | Severity |
+|------|-------------|----------|
+| `too_short` | Output below 15 characters | ⚠️ Warning |
+| `over_char_limit` | Exceeds template's character limit | ⚠️ Warning |
+| `over_word_limit` | Exceeds template's word limit | ⚠️ Warning |
+
+### Content Flags
+
+| Flag | Description | Severity |
+|------|-------------|----------|
+| `forbidden_word` | Contains a word from template's forbidden list | 🚫 Error |
+| `has_preamble` | Starts with "Here's a hook:", "Sure!", etc. | ℹ️ Info |
+| `has_postamble` | Ends with "Let me know!", "Hope this helps!" | ℹ️ Info |
+| `has_quotes` | Output wrapped in quotation marks | ℹ️ Info |
+| `has_placeholder` | Contains [Name], {Company}, or {{variable}} | 🚫 Error |
+| `has_ai_speak` | Contains "As an AI...", "I cannot..." | 🚫 Error |
+| `has_cliche` | Contains "hope this finds you well", "circle back" | ⚠️ Warning |
+| `generic` | Not personalized enough based on input | ⚠️ Warning |
+
+---
+
+## Auto-Fix Feature
+
+<Info>
+  Smelt automatically fixes certain issues **before** you see them!
+</Info>
+
+These are stripped automatically from every AI output:
+
+| Issue | Auto-Fix |
+|-------|----------|
+| **Preambles** | "Here's a hook:", "Sure!", "Certainly!" → Removed |
+| **Postambles** | "Let me know!", "Hope this helps!" → Removed |
+| **Quote wrappers** | Surrounding quotation marks → Removed |
+
+<Note>
+  Flags shown in results are issues that **couldn't** be auto-fixed.
+</Note>
+
+---
+
+## Flag Details
+
+### too_short
+
+**What it means:** Output is under 15 characters.
+
+**Common causes:**
+- AI misunderstood the prompt
+- Input data was insufficient
+- Template constraints too restrictive
+
+**How to fix:**
+- Edit inline to expand
+- Re-run with revised prompt
+- Check input data quality
+
+---
+
+### over_char_limit / over_word_limit
+
+**What it means:** Output exceeded your template's length constraints.
+
+**Common causes:**
+- AI didn't fully respect limits
+- Limits set too low for the task
+
+**How to fix:**
+- Edit to shorten
+- Adjust template limits
+- Make limit clearer in prompt ("MUST be under 100 characters")
+
+---
+
+### forbidden_word
+
+**What it means:** Output contains a word you banned in the template.
+
+**Common causes:**
+- AI used the word despite instructions
+- Word appears in a different form
+
+**How to fix:**
+- Edit to remove the word
+- Make prohibition clearer in prompt
+- Consider if the word is truly necessary to ban
+
+<Tip>
+  Forbidden word detection uses word boundaries—"loan" won't flag "loans" or "alone".
+</Tip>
+
+---
+
+### has_preamble
+
+**What it means:** Output starts with AI-style introductions.
+
+**Examples:**
+- "Here's a hook for you:"
+- "Sure, here's what I came up with:"
+- "Certainly!"
+
+**Why it's flagged:** These should have been auto-fixed. If you see this flag, the preamble pattern wasn't recognized.
+
+**How to fix:** Edit to remove the preamble manually.
+
+---
+
+### has_postamble
+
+**What it means:** Output ends with AI-style sign-offs.
+
+**Examples:**
+- "Let me know if you need changes!"
+- "Hope this helps!"
+- "Feel free to ask for more!"
+
+**Why it's flagged:** These should have been auto-fixed. If you see this flag, the postamble pattern wasn't recognized.
+
+**How to fix:** Edit to remove the postamble manually.
+
+---
+
+### has_quotes
+
+**What it means:** Output is wrapped in quotation marks.
+
+**Example:**
+```
+"Scaling your SaaS team in Austin is no small feat—"
+```
+
+**Why it's flagged:** Should have been auto-fixed. Quotes suggest the AI is "presenting" rather than "being" the copy.
+
+**How to fix:** Edit to remove surrounding quotes.
+
+---
+
+### has_placeholder
+
+**What it means:** Output contains unfilled placeholders.
+
+**Examples:**
+- `[Name]`
+- `{Company}`
+- `{{variable}}`
+- `[INSERT CITY HERE]`
+
+**Common causes:**
+- AI left placeholders instead of using data
+- Variable wasn't found in CSV
+- AI misunderstood the task
+
+**How to fix:**
+- Check that CSV has the expected columns
+- Edit to fill in the placeholder
+- Re-run after fixing the prompt
+
+<Warning>
+  This is a serious flag—placeholders will look terrible if sent to prospects!
+</Warning>
+
+---
+
+### has_ai_speak
+
+**What it means:** Output contains language revealing it's AI-generated.
+
+**Examples:**
+- "As an AI language model..."
+- "I cannot provide..."
+- "I don't have access to..."
+
+**Common causes:**
+- AI broke character
+- Prompt triggered safety responses
+- Unusual input data
+
+**How to fix:**
+- Edit to remove AI language
+- Revise prompt to prevent this
+- Check input data for issues
+
+---
+
+### has_cliche
+
+**What it means:** Output contains overused phrases.
+
+**Examples:**
+- "I hope this email finds you well"
+- "Circle back"
+- "Touch base"
+- "Low-hanging fruit"
+- "Synergy"
+
+**Why it matters:** These phrases are so common they reduce impact and feel generic.
+
+**How to fix:**
+- Edit to replace with more original phrasing
+- Add clichés to forbidden words list
+
+---
+
+### generic
+
+**What it means:** Output doesn't seem personalized to the specific lead.
+
+**Detection:** Checks if the output could apply to almost any lead rather than being tailored.
+
+**Common causes:**
+- Not enough data in the CSV
+- Prompt doesn't reference enough variables
+- Template is too general
+
+**How to fix:**
+- Use more variables in your prompt
+- Add more specific instructions
+- Ensure CSV has relevant data
+
+---
+
+## Filtering by Quality
+
+In the Results view, filter to show:
+
+| Filter | Shows |
+|--------|-------|
+| **All results** | Everything |
+| **Has flags** | Only outputs with quality issues |
+| **No flags** | Only clean outputs |
+
+<Tip>
+  Review flagged outputs first, then bulk-approve clean ones.
+</Tip>
+
+---
+
+## Quality Flag Strategy
+
+<Steps>
+  <Step title="Filter to flagged only">
+    Focus on outputs that need attention
+  </Step>
+  <Step title="Review and edit">
+    Fix issues inline or decide to re-run
+  </Step>
+  <Step title="Bulk approve clean outputs">
+    Select all clean outputs and approve
+  </Step>
+  <Step title="Re-run problematic rows">
+    If many rows have issues, revise template and re-run
+  </Step>
+</Steps>

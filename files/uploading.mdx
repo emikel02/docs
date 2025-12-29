@@ -1,0 +1,90 @@
+---
+title: Uploading Files
+description: How to upload your lead data CSV files
+---
+
+# Uploading Files
+
+Upload your CSV data files containing leads/contacts for copy generation.
+
+## Supported Format
+
+- **File type:** CSV only
+- **Size limit:** 50MB maximum
+- **Encoding:** UTF-8 recommended (also supports UTF-16, Latin-1, Windows-1252)
+
+## How to Upload
+
+<Steps>
+  <Step title="Navigate to Files">
+    Click **Files** in the left sidebar
+  </Step>
+  <Step title="Click Upload File">
+    Click the **Upload File** button
+  </Step>
+  <Step title="Select Your File">
+    Either drag-and-drop your CSV file or click to browse your computer
+  </Step>
+  <Step title="Wait for Processing">
+    Smelt will:
+    - Parse and validate the file
+    - Detect and map columns automatically
+    - Calculate a quality score
+    - Identify duplicates
+    - Store securely in cloud storage
+  </Step>
+  <Step title="Review Quality Analysis">
+    See your file's quality score and column mappings
+  </Step>
+</Steps>
+
+## Upload Success/Failure
+
+<Tabs>
+  <Tab title="Success">
+    - ✅ Green checkmark appears
+    - Redirected to file detail page
+    - Quality score and column mappings displayed
+  </Tab>
+  <Tab title="Failure">
+    - ❌ Red error message with specific issue
+    - Common causes:
+      - File too large (>50MB)
+      - Invalid format (not CSV)
+      - Encoding issues
+      - Empty file
+  </Tab>
+</Tabs>
+
+## What Happens During Upload
+
+1. **File is parsed** — Rows and columns extracted
+2. **Columns detected** — Headers matched to known field types
+3. **Quality scored** — Completeness and data quality assessed
+4. **Duplicates identified** — Email, company, phone, LinkedIn duplicates flagged
+5. **File stored** — Securely saved in encrypted cloud storage
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Use headers in the first row">
+    Column names should be in row 1. Smelt uses these for variable matching.
+  </Accordion>
+  <Accordion title="Use consistent column names">
+    `Company Name` and `company_name` will both work, but be consistent.
+  </Accordion>
+  <Accordion title="Clean your data before upload">
+    Remove empty rows, trim whitespace, fix obvious errors.
+  </Accordion>
+  <Accordion title="Use UTF-8 encoding">
+    When exporting from Excel: Save As → CSV UTF-8
+    When exporting from Google Sheets: File → Download → CSV
+  </Accordion>
+  <Accordion title="Deduplicate if possible">
+    While Smelt detects duplicates, deduping before upload saves processing.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Start with a small test file (100-500 rows) to verify your template works before uploading large files.
+</Tip>
