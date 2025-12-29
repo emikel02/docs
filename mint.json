@@ -1,0 +1,135 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Smelt Documentation",
+  "logo": {
+    "dark": "/logo/smelt-logo-dark.svg",
+    "light": "/logo/smelt-logo-light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#F59E0B",
+    "light": "#FBBF24",
+    "dark": "#D97706",
+    "anchors": {
+      "from": "#F59E0B",
+      "to": "#D97706"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "App",
+      "url": "https://app.getsmelt.io"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Get Started Free",
+    "url": "https://app.getsmelt.io/register"
+  },
+  "tabs": [
+    {
+      "name": "Documentation",
+      "url": "/"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "App",
+      "icon": "rocket",
+      "url": "https://app.getsmelt.io"
+    },
+    {
+      "name": "Contact Support",
+      "icon": "envelope",
+      "url": "mailto:support@getsmelt.io"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "introduction",
+        "quickstart"
+      ]
+    },
+    {
+      "group": "Account & Billing",
+      "pages": [
+        "getting-started/account",
+        "getting-started/billing",
+        "getting-started/dashboard"
+      ]
+    },
+    {
+      "group": "Files & Data",
+      "pages": [
+        "files/uploading",
+        "files/quality-scores",
+        "files/column-detection",
+        "files/encoding"
+      ]
+    },
+    {
+      "group": "Templates",
+      "pages": [
+        "templates/overview",
+        "templates/template-library",
+        "templates/creating-templates",
+        "templates/variables",
+        "templates/testing",
+        "templates/chaining"
+      ]
+    },
+    {
+      "group": "Custom Variables",
+      "pages": [
+        "custom-variables"
+      ]
+    },
+    {
+      "group": "Jobs",
+      "pages": [
+        "jobs/creating-jobs",
+        "jobs/execution",
+        "jobs/usage-limits",
+        "jobs/history"
+      ]
+    },
+    {
+      "group": "Results",
+      "pages": [
+        "results/viewing",
+        "results/quality-flags",
+        "results/editing",
+        "results/exporting"
+      ]
+    },
+    {
+      "group": "API Keys & Billing",
+      "pages": [
+        "api-keys/billing-modes",
+        "api-keys/byok-setup",
+        "api-keys/security"
+      ]
+    },
+    {
+      "group": "Workflow",
+      "pages": [
+        "workflow/cold-email-stack"
+      ]
+    },
+    {
+      "group": "Help",
+      "pages": [
+        "troubleshooting/common-issues",
+        "troubleshooting/error-messages",
+        "faq",
+        "best-practices",
+        "glossary"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/getsmelt",
+    "linkedin": "https://linkedin.com/company/getsmelt"
+  }
+}

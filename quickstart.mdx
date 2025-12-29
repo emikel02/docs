@@ -1,80 +1,131 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: Quick Start
+description: Get your first job running in 5 minutes
 ---
 
-## Get started in three steps
+# Quick Start Guide
 
-Get your documentation site running locally and make your first customization.
+Get from zero to personalized copy in 5 minutes.
 
-### Step 1: Set up your local environment
+<Info>
+  Free tier includes 250 rows/month. No credit card required.
+</Info>
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
+## Your First Job in 5 Steps
+
+<Steps>
+  <Step title="Create Your Account">
+    1. Go to [app.getsmelt.io/register](https://app.getsmelt.io/register)
+    2. Enter your email and create a password
+    3. You'll land on the Dashboard
     
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
+    <Tip>
+      Free tier uses Smelt's platform API key automatically—no setup needed!
+    </Tip>
+  </Step>
+  
+  <Step title="Upload Your Lead CSV">
+    1. Click **Files** in the sidebar
+    2. Click **Upload File**
+    3. Drag and drop your CSV or click to browse
+    4. Wait for processing (quality score will appear)
     
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 2: Deploy your changes
-
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
+    Your CSV should have columns like: Name, Company, Job Title, Email, City, Industry
     
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+    <Note>
+      Smelt automatically detects 15 common column types and calculates a quality score for your data.
+    </Note>
+  </Step>
+  
+  <Step title="Get a Template">
+    1. Click **Template Library** in the sidebar
+    2. Browse the 17 pre-built templates by category:
+       - **Cold Outreach** — Hooks and opening lines
+       - **Lead Qualification** — Scoring and fit assessment
+       - **Value Proposition** — Benefits and ROI
+       - **Personalization** — First lines and follow-ups
+    3. Find one you like (e.g., "Email First Line")
+    4. Click **Duplicate**
+    5. Customize if needed, then **Save**
+    
+    <Tip>
+      Start with a system template and customize it. Much faster than starting from scratch!
+    </Tip>
+  </Step>
+  
+  <Step title="Create and Run a Job">
+    1. Click **Jobs** in the sidebar
+    2. Click **New Job**
+    3. **Step 1:** Select your uploaded file
+    4. **Step 2:** Choose row range (start with 10-20 rows to test)
+    5. **Step 3:** Select your template(s)
+    6. **Step 4:** Review cost estimate and click **Start Job**
+    
+    <Warning>
+      Template tests and job runs count toward your monthly usage!
+    </Warning>
+  </Step>
+  
+  <Step title="Review and Export Results">
+    1. Watch the progress bar (jobs run in parallel for speed)
+    2. When complete, click **View Results**
+    3. Review outputs and quality flags
+    4. Edit any flagged outputs inline if needed
+    5. Click **Export** to download CSV
+    6. Import to Instantly, Lemlist, Smartlead, or your sending tool
+    
+    <Note>
+      Each output gets a confidence score based on input data completeness, plus quality flags for potential issues.
+    </Note>
+  </Step>
+</Steps>
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+## What You'll See
 
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
+### Dashboard
+Your home base showing total jobs, rows processed, and usage remaining.
 
-### Step 3: Go live
+### Files Page
+All your uploaded CSVs with row counts, quality scores, and duplicate detection.
 
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
+### Results Page
+Every generated output with:
+- Original lead data
+- AI-generated copy
+- Confidence score (0-100)
+- Quality flags (if any)
+- Edit and re-run options
 
-## Next steps
-
-Now that you have your docs running, explore these key features:
+## Next Steps
 
 <CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
+  <Card title="Create Custom Templates" icon="pen" href="/templates/creating-templates">
+    Build templates tailored to your offer
+  </Card>
+  <Card title="Template Chaining" icon="link" href="/templates/chaining">
+    Use outputs from one template in another
+  </Card>
+  <Card title="Upgrade Your Plan" icon="arrow-up" href="/getting-started/billing">
+    Get more rows per month
+  </Card>
+  <Card title="Set Up BYOK" icon="key" href="/api-keys/byok-setup">
+    Save 10-50x with your own API key
+  </Card>
 </CardGroup>
 
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>
+## Common First-Timer Questions
+
+<AccordionGroup>
+  <Accordion title="Do I need an API key to start?">
+    No! Free tier uses Smelt's platform key automatically. You only need your own key if you choose BYOK billing mode on a paid plan.
+  </Accordion>
+  <Accordion title="What if my output quality is bad?">
+    Check the quality flags for specific issues. Common fixes: improve your prompt, add more specific instructions, or ensure your CSV has enough data.
+  </Accordion>
+  <Accordion title="Can I test before running a full job?">
+    Yes! Use the Test feature in the template editor. But note: tests count toward your monthly usage.
+  </Accordion>
+  <Accordion title="How do I use the outputs in my email tool?">
+    Export results as CSV. The new AI-generated columns become personalization variables in Instantly, Lemlist, etc.
+  </Accordion>
+</AccordionGroup>
